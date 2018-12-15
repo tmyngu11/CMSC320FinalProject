@@ -11828,7 +11828,7 @@ seaborn - <a href="https://seaborn.pydata.org/">https://seaborn.pydata.org/</a>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In&nbsp;[37]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Necessary libraries and imports to complete this tutorial</span>
@@ -11860,7 +11860,7 @@ Before running the code to read the League of Legends file, we have to preproces
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[38]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">league</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;LoL.csv&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
@@ -11878,7 +11878,7 @@ Before running the code to read the League of Legends file, we have to preproces
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[4]:</div>
+<div class="prompt output_prompt">Out[38]:</div>
 
 
 
@@ -13118,7 +13118,7 @@ The titles of each column should be self-explanatory. If you'd like to learn mor
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[39]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">league</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -13134,7 +13134,7 @@ The titles of each column should be self-explanatory. If you'd like to learn mor
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[5]:</div>
+<div class="prompt output_prompt">Out[39]:</div>
 
 
 
@@ -13294,7 +13294,7 @@ The titles of each column should be self-explanatory. If you'd like to learn mor
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[40]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;purple&quot;</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="s2">&quot;pink&quot;</span><span class="p">,</span> <span class="s2">&quot;brown&quot;</span><span class="p">,</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;teal&quot;</span><span class="p">,</span> <span class="s2">&quot;orange&quot;</span><span class="p">,</span> <span class="s2">&quot;yellow&quot;</span><span class="p">,</span> <span class="s2">&quot;grey&quot;</span><span class="p">,</span> \
@@ -13324,12 +13324,12 @@ First, we'll get the matches when the blue team banned Zoe
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[41]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">blueban</span> <span class="o">=</span>  <span class="n">league</span><span class="p">[(</span><span class="n">league</span><span class="o">.</span><span class="n">side</span> <span class="o">==</span> <span class="s2">&quot;Blue&quot;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">league</span><span class="o">.</span><span class="n">position</span> <span class="o">==</span> <span class="s2">&quot;Team&quot;</span><span class="p">)]</span>
 <span class="n">bluezoeban</span> <span class="o">=</span> <span class="n">blueban</span><span class="p">[((</span><span class="n">league</span><span class="o">.</span><span class="n">ban1</span> <span class="o">==</span> <span class="s2">&quot;Zoe&quot;</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">league</span><span class="o">.</span><span class="n">ban2</span> <span class="o">==</span> <span class="s2">&quot;Zoe&quot;</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">league</span><span class="o">.</span><span class="n">ban3</span> <span class="o">==</span> <span class="s2">&quot;Zoe&quot;</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">league</span><span class="o">.</span><span class="n">ban4</span> <span class="o">==</span> <span class="s2">&quot;Zoe&quot;</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">league</span><span class="o">.</span><span class="n">ban5</span> <span class="o">==</span> <span class="s2">&quot;Zoe&quot;</span><span class="p">))]</span>
-<span class="n">bluezoeban</span>
+<span class="n">bluezoeban</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 
 </div>
@@ -13342,7 +13342,7 @@ First, we'll get the matches when the blue team banned Zoe
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[7]:</div>
+<div class="prompt output_prompt">Out[41]:</div>
 
 
 
@@ -13479,1073 +13479,8 @@ First, we'll get the matches when the blue team banned Zoe
       <td>Ezreal</td>
       <td>0.0</td>
     </tr>
-    <tr>
-      <th>322</th>
-      <td>LCK</td>
-      <td>2018-2</td>
-      <td>43266.31083</td>
-      <td>1.4</td>
-      <td>2</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>SK Telecom T1</td>
-      <td></td>
-      <td>Rakan</td>
-      <td>Zoe</td>
-      <td>Taliyah</td>
-      <td>Ryze</td>
-      <td>Singed</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>370</th>
-      <td>EULCS</td>
-      <td>2018-2</td>
-      <td>43267.51301</td>
-      <td>1</td>
-      <td>2</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Fnatic</td>
-      <td></td>
-      <td>Zoe</td>
-      <td>Lulu</td>
-      <td>Irelia</td>
-      <td>Pyke</td>
-      <td>Lucian</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>394</th>
-      <td>NALCS</td>
-      <td>2018-2</td>
-      <td>43267.65397</td>
-      <td>1</td>
-      <td>1</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Team Liquid</td>
-      <td></td>
-      <td>Morgana</td>
-      <td>Brand</td>
-      <td>Zoe</td>
-      <td>Alistar</td>
-      <td>Ornn</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>562</th>
-      <td>NALCS</td>
-      <td>2018-2</td>
-      <td>43268.60641</td>
-      <td>1</td>
-      <td>2</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Team Liquid</td>
-      <td></td>
-      <td>Brand</td>
-      <td>Morgana</td>
-      <td>Zoe</td>
-      <td>Renekton</td>
-      <td>Darius</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>610</th>
-      <td>LCK</td>
-      <td>2018-2</td>
-      <td>43268.27922</td>
-      <td>1.6</td>
-      <td>2</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Hanwha Life Esports</td>
-      <td></td>
-      <td>Taric</td>
-      <td>Braum</td>
-      <td>Zoe</td>
-      <td>Dr. Mundo</td>
-      <td>Ornn</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>622</th>
-      <td>NALCS</td>
-      <td>2018-2</td>
-      <td>43267.78785</td>
-      <td>1</td>
-      <td>1</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Echo Fox</td>
-      <td></td>
-      <td>Brand</td>
-      <td>Lucian</td>
-      <td>Zoe</td>
-      <td>Renekton</td>
-      <td>Mordekaiser</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>634</th>
-      <td>LCK</td>
-      <td>2018-2</td>
-      <td>43270.09763</td>
-      <td>2.1</td>
-      <td>1</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>KT Rolster</td>
-      <td></td>
-      <td>Lulu</td>
-      <td>Shen</td>
-      <td>Zoe</td>
-      <td>Vel'koz</td>
-      <td>Dr. Mundo</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>658</th>
-      <td>LCK</td>
-      <td>2018-2</td>
-      <td>43270.23981</td>
-      <td>2.1</td>
-      <td>1</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Afreeca Freecs</td>
-      <td></td>
-      <td>Zoe</td>
-      <td>Alistar</td>
-      <td>Taliyah</td>
-      <td>Dr. Mundo</td>
-      <td>Ezreal</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>706</th>
-      <td>LCK</td>
-      <td>2018-2</td>
-      <td>43271.07306</td>
-      <td>2.2</td>
-      <td>1</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>SK Telecom T1</td>
-      <td></td>
-      <td>Master Yi</td>
-      <td>Irelia</td>
-      <td>Zoe</td>
-      <td>Singed</td>
-      <td>Aatrox</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>742</th>
-      <td>LCK</td>
-      <td>2018-2</td>
-      <td>43271.22718</td>
-      <td>2.2</td>
-      <td>1</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Gen.G</td>
-      <td></td>
-      <td>Swain</td>
-      <td>Nocturne</td>
-      <td>Aatrox</td>
-      <td>Zoe</td>
-      <td>Irelia</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>850</th>
-      <td>LCK</td>
-      <td>2018-2</td>
-      <td>43273.1591</td>
-      <td>2.4</td>
-      <td>2</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>SK Telecom T1</td>
-      <td></td>
-      <td>Kai'Sa</td>
-      <td>Zoe</td>
-      <td>Nocturne</td>
-      <td>Singed</td>
-      <td>Dr. Mundo</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>886</th>
-      <td>EULCS</td>
-      <td>2018-2</td>
-      <td>43273.43795</td>
-      <td>2</td>
-      <td>1</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Giants Gaming</td>
-      <td></td>
-      <td>Ryze</td>
-      <td>Taliyah</td>
-      <td>Zoe</td>
-      <td>Trundle</td>
-      <td>Kindred</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>898</th>
-      <td>EULCS</td>
-      <td>2018-2</td>
-      <td>43273.4834</td>
-      <td>2</td>
-      <td>1</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Roccat</td>
-      <td></td>
-      <td>Zoe</td>
-      <td>Nocturne</td>
-      <td>Aatrox</td>
-      <td>Dr. Mundo</td>
-      <td>Swain</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>922</th>
-      <td>EULCS</td>
-      <td>2018-2</td>
-      <td>43273.56743</td>
-      <td>2</td>
-      <td>1</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Fnatic</td>
-      <td></td>
-      <td>Camille</td>
-      <td>Fiddlesticks</td>
-      <td>Zoe</td>
-      <td>Aatrox</td>
-      <td>Darius</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>946</th>
-      <td>EULCS</td>
-      <td>2018-2</td>
-      <td>43274.39535</td>
-      <td>2</td>
-      <td>2</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Roccat</td>
-      <td></td>
-      <td>Aatrox</td>
-      <td>Zoe</td>
-      <td>Irelia</td>
-      <td>Dr. Mundo</td>
-      <td>Cassiopeia</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>982</th>
-      <td>EULCS</td>
-      <td>2018-2</td>
-      <td>43274.55985</td>
-      <td>2</td>
-      <td>2</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Fnatic</td>
-      <td></td>
-      <td>Zoe</td>
-      <td>Aatrox</td>
-      <td>Taliyah</td>
-      <td>Heimerdinger</td>
-      <td>Ziggs</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>1138</th>
-      <td>EULCS</td>
-      <td>2018-2</td>
-      <td>43323.44255</td>
-      <td>8</td>
-      <td>2</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Roccat</td>
-      <td></td>
-      <td>Ryze</td>
-      <td>Dr. Mundo</td>
-      <td>Akali</td>
-      <td>Zoe</td>
-      <td>Talon</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>1150</th>
-      <td>NALCS</td>
-      <td>2018-2</td>
-      <td>43275.66067</td>
-      <td>2</td>
-      <td>2</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Team Liquid</td>
-      <td></td>
-      <td>Nocturne</td>
-      <td>Swain</td>
-      <td>Zoe</td>
-      <td>Xayah</td>
-      <td>Trundle</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>1174</th>
-      <td>NALCS</td>
-      <td>2018-2</td>
-      <td>43275.74299</td>
-      <td>2</td>
-      <td>2</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Echo Fox</td>
-      <td></td>
-      <td>Shen</td>
-      <td>Tahm Kench</td>
-      <td>Zoe</td>
-      <td>Morgana</td>
-      <td>Aatrox</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>1186</th>
-      <td>LCK</td>
-      <td>2018-2</td>
-      <td>43275.0822</td>
-      <td>2.6</td>
-      <td>1</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>SK Telecom T1</td>
-      <td></td>
-      <td>Zoe</td>
-      <td>Camille</td>
-      <td>Nocturne</td>
-      <td>Morgana</td>
-      <td>Syndra</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>1210</th>
-      <td>LCK</td>
-      <td>2018-2</td>
-      <td>43275.2176</td>
-      <td>2.6</td>
-      <td>1</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>BBQ Olivers</td>
-      <td></td>
-      <td>Taliyah</td>
-      <td>Kai'sa</td>
-      <td>Zoe</td>
-      <td>Morgana</td>
-      <td>Tahm Kench</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>1234</th>
-      <td>LCK</td>
-      <td>2018-2</td>
-      <td>43277.09479</td>
-      <td>3.1</td>
-      <td>1</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>SK Telecom T1</td>
-      <td></td>
-      <td>Zoe</td>
-      <td>Nocturne</td>
-      <td>Rumble</td>
-      <td>Renekton</td>
-      <td>Trundle</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>1306</th>
-      <td>LCK</td>
-      <td>2018-2</td>
-      <td>43278.02581</td>
-      <td>3.2</td>
-      <td>2</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Hanwha Life Esports</td>
-      <td></td>
-      <td>Taric</td>
-      <td>Camille</td>
-      <td>Zoe</td>
-      <td>Xayah</td>
-      <td>Kalista</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>1390</th>
-      <td>LCK</td>
-      <td>2018-2</td>
-      <td>43279.09448</td>
-      <td>3.3</td>
-      <td>1</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>KT Rolster</td>
-      <td></td>
-      <td>Morgana</td>
-      <td>Shen</td>
-      <td>Taliyah</td>
-      <td>Vladimir</td>
-      <td>Zoe</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>1426</th>
-      <td>LCK</td>
-      <td>2018-2</td>
-      <td>43279.27824</td>
-      <td>3.3</td>
-      <td>2</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>SK Telecom T1</td>
-      <td></td>
-      <td>Nocturne</td>
-      <td>Aatrox</td>
-      <td>Zoe</td>
-      <td>Jayce</td>
-      <td>Heimerdinger</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>3586</th>
-      <td>LCK</td>
-      <td>2018-2</td>
-      <td>43310.20656</td>
-      <td>6.6</td>
-      <td>3</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>SK Telecom T1</td>
-      <td></td>
-      <td>Rakan</td>
-      <td>Zoe</td>
-      <td>Gnar</td>
-      <td>Galio</td>
-      <td>Dr. Mundo</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>3598</th>
-      <td>LCK</td>
-      <td>2018-2</td>
-      <td>43310.26206</td>
-      <td>6.6</td>
-      <td>1</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>KT Rolster</td>
-      <td></td>
-      <td>Ezreal</td>
-      <td>Trundle</td>
-      <td>Tahm Kench</td>
-      <td>Cho'gath</td>
-      <td>Zoe</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>3658</th>
-      <td>LCK</td>
-      <td>2018-2</td>
-      <td>43312.27455</td>
-      <td>7.1</td>
-      <td>1</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Kingzone DragonX</td>
-      <td></td>
-      <td>Orianna</td>
-      <td>Shen</td>
-      <td>Zoe</td>
-      <td>Swain</td>
-      <td>Syndra</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>3694</th>
-      <td>LCK</td>
-      <td>2018-2</td>
-      <td>43313.11161</td>
-      <td>7.2</td>
-      <td>1</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>BBQ Olivers</td>
-      <td></td>
-      <td>Ezreal</td>
-      <td>Zoe</td>
-      <td>Galio</td>
-      <td>Braum</td>
-      <td>Rakan</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>3718</th>
-      <td>LCK</td>
-      <td>2018-2</td>
-      <td>43313.20065</td>
-      <td>7.2</td>
-      <td>1</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>SK Telecom T1</td>
-      <td></td>
-      <td>Alistar</td>
-      <td>Rakan</td>
-      <td>Zoe</td>
-      <td>Ashe</td>
-      <td>Kai'Sa</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>3766</th>
-      <td>LCK</td>
-      <td>2018-2</td>
-      <td>43314.15736</td>
-      <td>7.3</td>
-      <td>2</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>MVP</td>
-      <td></td>
-      <td>Ryze</td>
-      <td>Shen</td>
-      <td>Kindred</td>
-      <td>Orianna</td>
-      <td>Zoe</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>3790</th>
-      <td>LCK</td>
-      <td>2018-2</td>
-      <td>43314.28289</td>
-      <td>7.3</td>
-      <td>2</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>KT Rolster</td>
-      <td></td>
-      <td>Tahm Kench</td>
-      <td>Morgana</td>
-      <td>Zoe</td>
-      <td>Gangplank</td>
-      <td>Camille</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>3814</th>
-      <td>EULCS</td>
-      <td>2018-2</td>
-      <td>43315.43477</td>
-      <td>7</td>
-      <td>1</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Unicorns of Love</td>
-      <td></td>
-      <td>Zoe</td>
-      <td>Rumble</td>
-      <td>Aatrox</td>
-      <td>Jhin</td>
-      <td>Gnar</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>3850</th>
-      <td>EULCS</td>
-      <td>2018-2</td>
-      <td>43315.58616</td>
-      <td>7</td>
-      <td>1</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Misfits</td>
-      <td></td>
-      <td>Trundle</td>
-      <td>Tahm Kench</td>
-      <td>Zoe</td>
-      <td>Rumble</td>
-      <td>Dr. Mundo</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>3886</th>
-      <td>EULCS</td>
-      <td>2018-2</td>
-      <td>43316.45236</td>
-      <td>7</td>
-      <td>2</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>H2K</td>
-      <td></td>
-      <td>Zoe</td>
-      <td>Tahm Kench</td>
-      <td>Rakan</td>
-      <td>Lucian</td>
-      <td>Varus</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>3898</th>
-      <td>EULCS</td>
-      <td>2018-2</td>
-      <td>43316.49394</td>
-      <td>7</td>
-      <td>2</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Vitality</td>
-      <td></td>
-      <td>Tahm Kench</td>
-      <td>Zoe</td>
-      <td>Ryze</td>
-      <td>Darius</td>
-      <td>Rumble</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>4006</th>
-      <td>LCK</td>
-      <td>2018-2</td>
-      <td>43317.16179</td>
-      <td>7.5</td>
-      <td>2</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Hanwha Life Esports</td>
-      <td></td>
-      <td>Yasuo</td>
-      <td>Galio</td>
-      <td>Zoe</td>
-      <td>Darius</td>
-      <td>Gangplank</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>4066</th>
-      <td>NALCS</td>
-      <td>2018-2</td>
-      <td>43316.70234</td>
-      <td>7</td>
-      <td>1</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Cloud9</td>
-      <td></td>
-      <td>Morgana</td>
-      <td>Trundle</td>
-      <td>Kennen</td>
-      <td>Zoe</td>
-      <td>Gnar</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>4078</th>
-      <td>NALCS</td>
-      <td>2018-2</td>
-      <td>43316.74786</td>
-      <td>7</td>
-      <td>1</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Counter Logic Gaming</td>
-      <td></td>
-      <td>Graves</td>
-      <td>Gangplank</td>
-      <td>Zoe</td>
-      <td>Jayce</td>
-      <td>Yasuo</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>4090</th>
-      <td>NALCS</td>
-      <td>2018-2</td>
-      <td>43316.79241</td>
-      <td>7</td>
-      <td>1</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>OpTic Gaming</td>
-      <td></td>
-      <td>Zoe</td>
-      <td>Taliyah</td>
-      <td>Rakan</td>
-      <td>Dr. Mundo</td>
-      <td>Azir</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>4210</th>
-      <td>LCK</td>
-      <td>2018-2</td>
-      <td>43319.28206</td>
-      <td>8.1</td>
-      <td>2</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>KT Rolster</td>
-      <td></td>
-      <td>Ryze</td>
-      <td>Braum</td>
-      <td>Zoe</td>
-      <td>Camille</td>
-      <td>Swain</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>4258</th>
-      <td>LCK</td>
-      <td>2018-2</td>
-      <td>43320.28212</td>
-      <td>8.2</td>
-      <td>2</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>BBQ Olivers</td>
-      <td></td>
-      <td>Morgana</td>
-      <td>Shen</td>
-      <td>Tahm Kench</td>
-      <td>Jayce</td>
-      <td>Zoe</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>4294</th>
-      <td>EULCS</td>
-      <td>2018-2</td>
-      <td>43322.44446</td>
-      <td>8</td>
-      <td>1</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Roccat</td>
-      <td></td>
-      <td>Zoe</td>
-      <td>Rumble</td>
-      <td>Aatrox</td>
-      <td>Ryze</td>
-      <td>Ezreal</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>4438</th>
-      <td>NALCS</td>
-      <td>2018-2</td>
-      <td>43323.69113</td>
-      <td>8</td>
-      <td>1</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Cloud9</td>
-      <td></td>
-      <td>Zoe</td>
-      <td>LeBlanc</td>
-      <td>Akali</td>
-      <td>Dr. Mundo</td>
-      <td>Gnar</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>4450</th>
-      <td>NALCS</td>
-      <td>2018-2</td>
-      <td>43323.72821</td>
-      <td>8</td>
-      <td>1</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Counter Logic Gaming</td>
-      <td></td>
-      <td>Zoe</td>
-      <td>Akali</td>
-      <td>Rakan</td>
-      <td>LeBlanc</td>
-      <td>Fizz</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>4474</th>
-      <td>NALCS</td>
-      <td>2018-2</td>
-      <td>43323.81501</td>
-      <td>8</td>
-      <td>1</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Clutch Gaming</td>
-      <td></td>
-      <td>Zoe</td>
-      <td>Ryze</td>
-      <td>Nocturne</td>
-      <td>Ashe</td>
-      <td>Jhin</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>4522</th>
-      <td>NALCS</td>
-      <td>2018-2</td>
-      <td>43324.71074</td>
-      <td>8</td>
-      <td>2</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Team Liquid</td>
-      <td></td>
-      <td>Akali</td>
-      <td>Gragas</td>
-      <td>Taliyah</td>
-      <td>Zoe</td>
-      <td>Yasuo</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>4630</th>
-      <td>LCK</td>
-      <td>2018-2p</td>
-      <td>43330.25564</td>
-      <td>R2</td>
-      <td>4</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Afreeca Freecs</td>
-      <td></td>
-      <td>Ryze</td>
-      <td>Tahm Kench</td>
-      <td>Morgana</td>
-      <td>Gnar</td>
-      <td>Zoe</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>4714</th>
-      <td>EULCS</td>
-      <td>2018-2</td>
-      <td>43330.39476</td>
-      <td>9</td>
-      <td>2</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Giants Gaming</td>
-      <td></td>
-      <td>Zoe</td>
-      <td>Tahm Kench</td>
-      <td>Aatrox</td>
-      <td>Rakan</td>
-      <td>Dr. Mundo</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>4810</th>
-      <td>NALCS</td>
-      <td>2018-2</td>
-      <td>43330.66247</td>
-      <td>9</td>
-      <td>1</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Echo Fox</td>
-      <td></td>
-      <td>Morgana</td>
-      <td>Galio</td>
-      <td>Nocturne</td>
-      <td>LeBlanc</td>
-      <td>Zoe</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>4846</th>
-      <td>NALCS</td>
-      <td>2018-2</td>
-      <td>43330.78564</td>
-      <td>9</td>
-      <td>1</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Golden Guardians</td>
-      <td></td>
-      <td>Akali</td>
-      <td>Taliyah</td>
-      <td>Gangplank</td>
-      <td>Zoe</td>
-      <td>Cassiopeia</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>4894</th>
-      <td>NALCS</td>
-      <td>2018-2</td>
-      <td>43331.65809</td>
-      <td>9</td>
-      <td>2</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Clutch Gaming</td>
-      <td></td>
-      <td>Zoe</td>
-      <td>Rumble</td>
-      <td>Akali</td>
-      <td>Lee Sin</td>
-      <td>Gragas</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>4954</th>
-      <td>NALCS</td>
-      <td>2018-2</td>
-      <td>43332.78333</td>
-      <td>T</td>
-      <td>T</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Team SoloMid</td>
-      <td></td>
-      <td>Varus</td>
-      <td>Braum</td>
-      <td>Nocturne</td>
-      <td>Zoe</td>
-      <td>Alistar</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>5230</th>
-      <td>LCK</td>
-      <td>2018-2</td>
-      <td>43321.27792</td>
-      <td>8.3</td>
-      <td>2</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>KT Rolster</td>
-      <td></td>
-      <td>Zoe</td>
-      <td>Ryze</td>
-      <td>Trundle</td>
-      <td>Camille</td>
-      <td>Alistar</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>5494</th>
-      <td>LCK</td>
-      <td>2018-2p</td>
-      <td>43351.3422</td>
-      <td>F</td>
-      <td>5</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>KT Rolster</td>
-      <td></td>
-      <td>Yasuo</td>
-      <td>Tahm Kench</td>
-      <td>Aatrox</td>
-      <td>Irelia</td>
-      <td>Zoe</td>
-      <td>1.0</td>
-    </tr>
   </tbody>
 </table>
-<p>103 rows × 16 columns</p>
 </div>
 </div>
 
@@ -14557,7 +13492,7 @@ First, we'll get the matches when the blue team banned Zoe
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[42]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Zoe was banned &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">bluezoeban</span><span class="p">))</span> <span class="o">+</span>  <span class="s2">&quot; times out of &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">blueban</span><span class="p">))</span> <span class="o">+</span> <span class="s2">&quot; Blue side games (&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">bluezoeban</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">blueban</span><span class="p">))</span> <span class="o">+</span> <span class="s2">&quot;%)&quot;</span><span class="p">)</span>
@@ -14597,12 +13532,12 @@ First, we'll get the matches when the blue team banned Zoe
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[43]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">redban</span> <span class="o">=</span>  <span class="n">league</span><span class="p">[(</span><span class="n">league</span><span class="o">.</span><span class="n">side</span> <span class="o">==</span> <span class="s2">&quot;Red&quot;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">league</span><span class="o">.</span><span class="n">position</span> <span class="o">==</span> <span class="s2">&quot;Team&quot;</span><span class="p">)]</span>
 <span class="n">redzoeban</span> <span class="o">=</span> <span class="n">redban</span><span class="p">[((</span><span class="n">league</span><span class="o">.</span><span class="n">ban1</span> <span class="o">==</span> <span class="s2">&quot;Zoe&quot;</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">league</span><span class="o">.</span><span class="n">ban2</span> <span class="o">==</span> <span class="s2">&quot;Zoe&quot;</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">league</span><span class="o">.</span><span class="n">ban3</span> <span class="o">==</span> <span class="s2">&quot;Zoe&quot;</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">league</span><span class="o">.</span><span class="n">ban4</span> <span class="o">==</span> <span class="s2">&quot;Zoe&quot;</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">league</span><span class="o">.</span><span class="n">ban5</span> <span class="o">==</span> <span class="s2">&quot;Zoe&quot;</span><span class="p">))]</span>
-<span class="n">redzoeban</span>
+<span class="n">redzoeban</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 
 </div>
@@ -14615,7 +13550,7 @@ First, we'll get the matches when the blue team banned Zoe
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[9]:</div>
+<div class="prompt output_prompt">Out[43]:</div>
 
 
 
@@ -14752,1073 +13687,8 @@ First, we'll get the matches when the blue team banned Zoe
       <td>Fizz</td>
       <td>0.0</td>
     </tr>
-    <tr>
-      <th>287</th>
-      <td>LCK</td>
-      <td>2018-2</td>
-      <td>43266.15917</td>
-      <td>1.4</td>
-      <td>2</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Jin Air Green Wings</td>
-      <td></td>
-      <td>Taliyah</td>
-      <td>Camille</td>
-      <td>Zoe</td>
-      <td>Darius</td>
-      <td>Alistar</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>335</th>
-      <td>EULCS</td>
-      <td>2018-2</td>
-      <td>43267.38645</td>
-      <td>1</td>
-      <td>2</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>H2K</td>
-      <td></td>
-      <td>Zoe</td>
-      <td>Taliyah</td>
-      <td>Irelia</td>
-      <td>Soraka</td>
-      <td>Morgana</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>347</th>
-      <td>EULCS</td>
-      <td>2018-2</td>
-      <td>43267.44332</td>
-      <td>1</td>
-      <td>2</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Unicorns of Love</td>
-      <td></td>
-      <td>Zoe</td>
-      <td>Irelia</td>
-      <td>Morgana</td>
-      <td>Zyra</td>
-      <td>Tahm Kench</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>359</th>
-      <td>EULCS</td>
-      <td>2018-2</td>
-      <td>43267.4766</td>
-      <td>1</td>
-      <td>2</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Giants Gaming</td>
-      <td></td>
-      <td>Zoe</td>
-      <td>Irelia</td>
-      <td>Aatrox</td>
-      <td>Heimerdinger</td>
-      <td>Thresh</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>383</th>
-      <td>EULCS</td>
-      <td>2018-2</td>
-      <td>43267.54966</td>
-      <td>1</td>
-      <td>2</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Splyce</td>
-      <td></td>
-      <td>Taliyah</td>
-      <td>Zoe</td>
-      <td>Irelia</td>
-      <td>Pyke</td>
-      <td>Dr. Mundo</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>407</th>
-      <td>NALCS</td>
-      <td>2018-2</td>
-      <td>43267.69407</td>
-      <td>1</td>
-      <td>1</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Counter Logic Gaming</td>
-      <td></td>
-      <td>Zoe</td>
-      <td>Yasuo</td>
-      <td>Taric</td>
-      <td>Dr. Mundo</td>
-      <td>Vladimir</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>431</th>
-      <td>NALCS</td>
-      <td>2018-2</td>
-      <td>43267.82233</td>
-      <td>1</td>
-      <td>1</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>OpTic Gaming</td>
-      <td></td>
-      <td>Taliyah</td>
-      <td>Zoe</td>
-      <td>Irelia</td>
-      <td>Aatrox</td>
-      <td>Singed</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>491</th>
-      <td>LCK</td>
-      <td>2018-2</td>
-      <td>43267.30115</td>
-      <td>1.5</td>
-      <td>2</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>BBQ Olivers</td>
-      <td></td>
-      <td>Shen</td>
-      <td>Ryze</td>
-      <td>Zoe</td>
-      <td>Mordekaiser</td>
-      <td>Morgana</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>539</th>
-      <td>LCK</td>
-      <td>2018-2</td>
-      <td>43268.21119</td>
-      <td>1.6</td>
-      <td>1</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Hanwha Life Esports</td>
-      <td></td>
-      <td>Taliyah</td>
-      <td>Taric</td>
-      <td>Zoe</td>
-      <td>Galio</td>
-      <td>Dr. Mundo</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>551</th>
-      <td>NALCS</td>
-      <td>2018-2</td>
-      <td>43268.56992</td>
-      <td>1</td>
-      <td>2</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>FlyQuest</td>
-      <td></td>
-      <td>Taric</td>
-      <td>Zoe</td>
-      <td>Graves</td>
-      <td>Alistar</td>
-      <td>Rakan</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>575</th>
-      <td>NALCS</td>
-      <td>2018-2</td>
-      <td>43268.63696</td>
-      <td>1</td>
-      <td>2</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>100 Thieves</td>
-      <td></td>
-      <td>Taliyah</td>
-      <td>Irelia</td>
-      <td>Zoe</td>
-      <td>Aurelion Sol</td>
-      <td>Graves</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>587</th>
-      <td>NALCS</td>
-      <td>2018-2</td>
-      <td>43268.73743</td>
-      <td>1</td>
-      <td>2</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Echo Fox</td>
-      <td></td>
-      <td>Zoe</td>
-      <td>Lulu</td>
-      <td>Morgana</td>
-      <td>Aatrox</td>
-      <td>Vladimir</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>599</th>
-      <td>NALCS</td>
-      <td>2018-2</td>
-      <td>43268.73743</td>
-      <td>1</td>
-      <td>2</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>OpTic Gaming</td>
-      <td></td>
-      <td>Zoe</td>
-      <td>Irelia</td>
-      <td>Brand</td>
-      <td>Aatrox</td>
-      <td>Dr. Mundo</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>671</th>
-      <td>LCK</td>
-      <td>2018-2</td>
-      <td>43270.28596</td>
-      <td>2.1</td>
-      <td>2</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Afreeca Freecs</td>
-      <td></td>
-      <td>Zoe</td>
-      <td>Nocturne</td>
-      <td>Vladimir</td>
-      <td>Ornn</td>
-      <td>Darius</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>719</th>
-      <td>LCK</td>
-      <td>2018-2</td>
-      <td>43271.15326</td>
-      <td>2.2</td>
-      <td>2</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>SK Telecom T1</td>
-      <td></td>
-      <td>Master Yi</td>
-      <td>Zoe</td>
-      <td>Camille</td>
-      <td>Trundle</td>
-      <td>Skarner</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>767</th>
-      <td>LCK</td>
-      <td>2018-2</td>
-      <td>43271.31595</td>
-      <td>2.2</td>
-      <td>3</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Hanwha Life Esports</td>
-      <td></td>
-      <td>Camille</td>
-      <td>Aurelion Sol</td>
-      <td>Lulu</td>
-      <td>Zoe</td>
-      <td>Taliyah</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>803</th>
-      <td>LCK</td>
-      <td>2018-2</td>
-      <td>43272.22463</td>
-      <td>2.3</td>
-      <td>3</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Afreeca Freecs</td>
-      <td></td>
-      <td>Zoe</td>
-      <td>Nocturne</td>
-      <td>Dr. Mundo</td>
-      <td>Morgana</td>
-      <td>Tahm Kench</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>827</th>
-      <td>LCK</td>
-      <td>2018-2</td>
-      <td>43272.32814</td>
-      <td>2.3</td>
-      <td>2</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>BBQ Olivers</td>
-      <td></td>
-      <td>Ezreal</td>
-      <td>Zoe</td>
-      <td>Shen</td>
-      <td>Varus</td>
-      <td>Lucian</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>959</th>
-      <td>EULCS</td>
-      <td>2018-2</td>
-      <td>43274.4515</td>
-      <td>2</td>
-      <td>2</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Giants Gaming</td>
-      <td></td>
-      <td>Zoe</td>
-      <td>Aatrox</td>
-      <td>Darius</td>
-      <td>Draven</td>
-      <td>Aurelion Sol</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>1007</th>
-      <td>NALCS</td>
-      <td>2018-2</td>
-      <td>43274.69171</td>
-      <td>2</td>
-      <td>1</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Clutch Gaming</td>
-      <td></td>
-      <td>Irelia</td>
-      <td>Zoe</td>
-      <td>Lulu</td>
-      <td>Cassiopeia</td>
-      <td>Varus</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>1019</th>
-      <td>LCK</td>
-      <td>2018-2</td>
-      <td>43274.11053</td>
-      <td>2.5</td>
-      <td>1</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Gen.G</td>
-      <td></td>
-      <td>Swain</td>
-      <td>Nocturne</td>
-      <td>Kai'sa</td>
-      <td>Zoe</td>
-      <td>Taliyah</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>1043</th>
-      <td>LCK</td>
-      <td>2018-2</td>
-      <td>43274.18953</td>
-      <td>2.5</td>
-      <td>1</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Afreeca Freecs</td>
-      <td></td>
-      <td>Kai'Sa</td>
-      <td>Ryze</td>
-      <td>Zoe</td>
-      <td>Darius</td>
-      <td>Ornn</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>1055</th>
-      <td>LCK</td>
-      <td>2018-2</td>
-      <td>43274.28005</td>
-      <td>2.5</td>
-      <td>2</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Hanwha Life Esports</td>
-      <td></td>
-      <td>Zoe</td>
-      <td>Nocturne</td>
-      <td>Camille</td>
-      <td>Lissandra</td>
-      <td>Rakan</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>1079</th>
-      <td>NALCS</td>
-      <td>2018-2</td>
-      <td>43274.74052</td>
-      <td>2</td>
-      <td>1</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Echo Fox</td>
-      <td></td>
-      <td>Zoe</td>
-      <td>Nocturne</td>
-      <td>Ziggs</td>
-      <td>Graves</td>
-      <td>Syndra</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>1091</th>
-      <td>NALCS</td>
-      <td>2018-2</td>
-      <td>43274.7863</td>
-      <td>2</td>
-      <td>1</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>FlyQuest</td>
-      <td></td>
-      <td>Zoe</td>
-      <td>Irelia</td>
-      <td>Trundle</td>
-      <td>Leona</td>
-      <td>Alistar</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>2951</th>
-      <td>NALCS</td>
-      <td>2018-2</td>
-      <td>43303.61329</td>
-      <td>5</td>
-      <td>2</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>100 Thieves</td>
-      <td></td>
-      <td>Aatrox</td>
-      <td>Nocturne</td>
-      <td>Zoe</td>
-      <td>Gnar</td>
-      <td>Darius</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>2963</th>
-      <td>NALCS</td>
-      <td>2018-2</td>
-      <td>43303.65366</td>
-      <td>5</td>
-      <td>2</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Counter Logic Gaming</td>
-      <td></td>
-      <td>Aatrox</td>
-      <td>Zoe</td>
-      <td>Rakan</td>
-      <td>Varus</td>
-      <td>Lucian</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>2987</th>
-      <td>NALCS</td>
-      <td>2018-2</td>
-      <td>43303.73215</td>
-      <td>5</td>
-      <td>2</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Echo Fox</td>
-      <td></td>
-      <td>Aatrox</td>
-      <td>Zoe</td>
-      <td>Heimerdinger</td>
-      <td>Ashe</td>
-      <td>Talon</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>2999</th>
-      <td>LCK</td>
-      <td>2018-2</td>
-      <td>43305.11942</td>
-      <td>6.1</td>
-      <td>1</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Kingzone DragonX</td>
-      <td></td>
-      <td>Aatrox</td>
-      <td>Shen</td>
-      <td>Zoe</td>
-      <td>Jayce</td>
-      <td>Darius</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>3023</th>
-      <td>LCK</td>
-      <td>2018-2</td>
-      <td>43305.24076</td>
-      <td>6.1</td>
-      <td>1</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>KT Rolster</td>
-      <td></td>
-      <td>Aatrox</td>
-      <td>Taliyah</td>
-      <td>Orianna</td>
-      <td>Zoe</td>
-      <td>Ryze</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>3155</th>
-      <td>LCK</td>
-      <td>2018-2</td>
-      <td>43307.07825</td>
-      <td>6.3</td>
-      <td>1</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>KT Rolster</td>
-      <td></td>
-      <td>Aatrox</td>
-      <td>Taliyah</td>
-      <td>Zoe</td>
-      <td>Ryze</td>
-      <td>Kai'Sa</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>3179</th>
-      <td>LCK</td>
-      <td>2018-2</td>
-      <td>43307.20105</td>
-      <td>6.3</td>
-      <td>3</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>KT Rolster</td>
-      <td></td>
-      <td>Aatrox</td>
-      <td>Taliyah</td>
-      <td>Zoe</td>
-      <td>Ryze</td>
-      <td>Vel'koz</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>3227</th>
-      <td>LCK</td>
-      <td>2018-2</td>
-      <td>43308.15492</td>
-      <td>6.4</td>
-      <td>2</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>BBQ Olivers</td>
-      <td></td>
-      <td>Aatrox</td>
-      <td>Kindred</td>
-      <td>Zoe</td>
-      <td>Malphite</td>
-      <td>Camille</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>3251</th>
-      <td>LCK</td>
-      <td>2018-2</td>
-      <td>43308.23038</td>
-      <td>6.4</td>
-      <td>1</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>SK Telecom T1</td>
-      <td></td>
-      <td>Aatrox</td>
-      <td>Taliyah</td>
-      <td>Nocturne</td>
-      <td>Zoe</td>
-      <td>Galio</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>3275</th>
-      <td>LCK</td>
-      <td>2018-2</td>
-      <td>43309.10162</td>
-      <td>6.5</td>
-      <td>1</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Kingzone DragonX</td>
-      <td></td>
-      <td>Aatrox</td>
-      <td>Trundle</td>
-      <td>Zoe</td>
-      <td>Vel'koz</td>
-      <td>LeBlanc</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>3347</th>
-      <td>EULCS</td>
-      <td>2018-2</td>
-      <td>43308.51815</td>
-      <td>6</td>
-      <td>1</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Giants Gaming</td>
-      <td></td>
-      <td>Zoe</td>
-      <td>Aatrox</td>
-      <td>Swain</td>
-      <td>Braum</td>
-      <td>Morgana</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>3371</th>
-      <td>EULCS</td>
-      <td>2018-2</td>
-      <td>43308.59968</td>
-      <td>6</td>
-      <td>1</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Schalke 04</td>
-      <td></td>
-      <td>Aatrox</td>
-      <td>Taliyah</td>
-      <td>Pyke</td>
-      <td>Heimerdinger</td>
-      <td>Zoe</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>3467</th>
-      <td>NALCS</td>
-      <td>2018-2</td>
-      <td>43309.74653</td>
-      <td>6</td>
-      <td>1</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>FlyQuest</td>
-      <td></td>
-      <td>Aatrox</td>
-      <td>Zoe</td>
-      <td>Nocturne</td>
-      <td>Graves</td>
-      <td>Gragas</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>3491</th>
-      <td>NALCS</td>
-      <td>2018-2</td>
-      <td>43309.82816</td>
-      <td>6</td>
-      <td>1</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>100 Thieves</td>
-      <td></td>
-      <td>Aatrox</td>
-      <td>Rakan</td>
-      <td>Nocturne</td>
-      <td>Azir</td>
-      <td>Zoe</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>3551</th>
-      <td>NALCS</td>
-      <td>2018-2</td>
-      <td>43310.73191</td>
-      <td>6</td>
-      <td>2</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Golden Guardians</td>
-      <td></td>
-      <td>Aatrox</td>
-      <td>Nocturne</td>
-      <td>Zoe</td>
-      <td>Jayce</td>
-      <td>Camille</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>3995</th>
-      <td>LCK</td>
-      <td>2018-2</td>
-      <td>43317.09162</td>
-      <td>7.5</td>
-      <td>1</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Hanwha Life Esports</td>
-      <td></td>
-      <td>Aatrox</td>
-      <td>Taliyah</td>
-      <td>Yasuo</td>
-      <td>Vel'koz</td>
-      <td>Zoe</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>4031</th>
-      <td>LCK</td>
-      <td>2018-2</td>
-      <td>43317.25391</td>
-      <td>7.5</td>
-      <td>1</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>BBQ Olivers</td>
-      <td></td>
-      <td>Aatrox</td>
-      <td>Ryze</td>
-      <td>Taliyah</td>
-      <td>Zoe</td>
-      <td>Xerath</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>4199</th>
-      <td>LCK</td>
-      <td>2018-2</td>
-      <td>43319.20127</td>
-      <td>8.1</td>
-      <td>1</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>KT Rolster</td>
-      <td></td>
-      <td>Aatrox</td>
-      <td>Taliyah</td>
-      <td>Zoe</td>
-      <td>Ryze</td>
-      <td>Xerath</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>4235</th>
-      <td>LCK</td>
-      <td>2018-2</td>
-      <td>43320.15611</td>
-      <td>8.2</td>
-      <td>2</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Afreeca Freecs</td>
-      <td></td>
-      <td>Aatrox</td>
-      <td>Taliyah</td>
-      <td>Shen</td>
-      <td>Zoe</td>
-      <td>LeBlanc</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>4499</th>
-      <td>NALCS</td>
-      <td>2018-2</td>
-      <td>43324.61416</td>
-      <td>8</td>
-      <td>2</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Clutch Gaming</td>
-      <td></td>
-      <td>Aatrox</td>
-      <td>Zoe</td>
-      <td>Kindred</td>
-      <td>LeBlanc</td>
-      <td>Ryze</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>4511</th>
-      <td>NALCS</td>
-      <td>2018-2</td>
-      <td>43324.65701</td>
-      <td>8</td>
-      <td>2</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>100 Thieves</td>
-      <td></td>
-      <td>Aatrox</td>
-      <td>Zoe</td>
-      <td>Syndra</td>
-      <td>Gnar</td>
-      <td>Cho'gath</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>4535</th>
-      <td>NALCS</td>
-      <td>2018-2</td>
-      <td>43324.75757</td>
-      <td>8</td>
-      <td>2</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Counter Logic Gaming</td>
-      <td></td>
-      <td>Zoe</td>
-      <td>Akali</td>
-      <td>Aatrox</td>
-      <td>Gangplank</td>
-      <td>Gnar</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>4583</th>
-      <td>LCK</td>
-      <td>2018-2p</td>
-      <td>43327.23519</td>
-      <td>R1</td>
-      <td>4</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Afreeca Freecs</td>
-      <td></td>
-      <td>Aatrox</td>
-      <td>Ashe</td>
-      <td>Tahm Kench</td>
-      <td>Zoe</td>
-      <td>Camille</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>5207</th>
-      <td>NALCS</td>
-      <td>2018-2p</td>
-      <td>43338.66744</td>
-      <td>QF</td>
-      <td>3</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>FlyQuest</td>
-      <td></td>
-      <td>Kindred</td>
-      <td>Gangplank</td>
-      <td>Braum</td>
-      <td>Zoe</td>
-      <td>Ornn</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>5723</th>
-      <td>LCK</td>
-      <td>2018-2rq</td>
-      <td>43355.19654</td>
-      <td>R1</td>
-      <td>3</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>SK Telecom T1</td>
-      <td></td>
-      <td>Aatrox</td>
-      <td>Rakan</td>
-      <td>Gragas</td>
-      <td>Zoe</td>
-      <td>Olaf</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>5735</th>
-      <td>LCK</td>
-      <td>2018-2rq</td>
-      <td>43355.22543</td>
-      <td>R1</td>
-      <td>4</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>SK Telecom T1</td>
-      <td></td>
-      <td>Aatrox</td>
-      <td>Rakan</td>
-      <td>Taliyah</td>
-      <td>Zoe</td>
-      <td>Gangplank</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>5771</th>
-      <td>LCK</td>
-      <td>2018-2rq</td>
-      <td>43357.16319</td>
-      <td>R2</td>
-      <td>2</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Gen.G</td>
-      <td></td>
-      <td>Yasuo</td>
-      <td>Taliyah</td>
-      <td>Tahm Kench</td>
-      <td>Galio</td>
-      <td>Zoe</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>5783</th>
-      <td>LCK</td>
-      <td>2018-2rq</td>
-      <td>43357.20029</td>
-      <td>R2</td>
-      <td>3</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Gen.G</td>
-      <td></td>
-      <td>Yasuo</td>
-      <td>Taliyah</td>
-      <td>Tahm Kench</td>
-      <td>Zoe</td>
-      <td>Galio</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>5795</th>
-      <td>LCK</td>
-      <td>2018-2rq</td>
-      <td>43357.2417</td>
-      <td>R2</td>
-      <td>4</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Gen.G</td>
-      <td></td>
-      <td>Yasuo</td>
-      <td>Taliyah</td>
-      <td>Tahm Kench</td>
-      <td>Zoe</td>
-      <td>Galio</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>16031</th>
-      <td>LMS</td>
-      <td>2018-2rq</td>
-      <td>43363.30163</td>
-      <td>R1</td>
-      <td>3</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>G-Rex</td>
-      <td></td>
-      <td>Akali</td>
-      <td>Taliyah</td>
-      <td>Tahm Kench</td>
-      <td>LeBlanc</td>
-      <td>Zoe</td>
-      <td>1.0</td>
-    </tr>
   </tbody>
 </table>
-<p>94 rows × 16 columns</p>
 </div>
 </div>
 
@@ -15830,7 +13700,7 @@ First, we'll get the matches when the blue team banned Zoe
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="prompt input_prompt">In&nbsp;[44]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Zoe was banned &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">redzoeban</span><span class="p">))</span> <span class="o">+</span>  <span class="s2">&quot; times out of &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">redban</span><span class="p">))</span> <span class="o">+</span> <span class="s2">&quot; Red side games (&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">redzoeban</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">redban</span><span class="p">))</span> <span class="o">+</span> <span class="s2">&quot;%)&quot;</span><span class="p">)</span>
@@ -15869,7 +13739,7 @@ First, we'll get the matches when the blue team banned Zoe
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="prompt input_prompt">In&nbsp;[45]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Zoe was banned &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">redzoeban</span><span class="p">)</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">bluezoeban</span><span class="p">))</span> <span class="o">+</span>  <span class="s2">&quot; times out of &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">redban</span><span class="p">))</span> <span class="o">+</span> <span class="s2">&quot; games (&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">redzoeban</span><span class="p">)</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">bluezoeban</span><span class="p">))</span><span class="o">*</span><span class="mi">100</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">redban</span><span class="p">))</span> <span class="o">+</span> <span class="s2">&quot;%)&quot;</span><span class="p">)</span>
@@ -15908,7 +13778,7 @@ First, we'll get the matches when the blue team banned Zoe
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="prompt input_prompt">In&nbsp;[46]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">total_games</span> <span class="o">=</span> <span class="n">league</span><span class="p">[</span><span class="n">league</span><span class="o">.</span><span class="n">position</span> <span class="o">==</span> <span class="s1">&#39;Team&#39;</span><span class="p">]</span>
@@ -15951,7 +13821,7 @@ First, we'll get the matches when the blue team banned Zoe
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="prompt input_prompt">In&nbsp;[47]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="p">(</span><span class="n">redban</span> <span class="o">&amp;</span> <span class="n">blueban</span><span class="p">)</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
@@ -15967,7 +13837,7 @@ First, we'll get the matches when the blue team banned Zoe
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[13]:</div>
+<div class="prompt output_prompt">Out[47]:</div>
 
 
 
@@ -16020,28 +13890,28 @@ First, we'll get the matches when the blue team banned Zoe
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The result should be to be expected because both teams cannot ever both ban the same champions especially in competitive. This is a nice check though.</P>
+<p><b>
+    For each team that banned Zoe, how many of those matches did the team win?</b></p>
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="prompt input_prompt">In&nbsp;[48]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## The result should be to be expected because both teams cannot ever both</span>
-<span class="c1">## ban the same champions especially in competitive. This is a nice check</span>
-<span class="c1">## though.</span>
-
-<span class="c1">## For red team bans, how many of those matches did the red team win?</span>
-<span class="n">redzoebanwin</span> <span class="o">=</span> <span class="n">redzoeban</span><span class="p">[</span><span class="n">redzoeban</span><span class="o">.</span><span class="n">result</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">redzoebanwin</span> <span class="o">=</span> <span class="n">redzoeban</span><span class="p">[</span><span class="n">redzoeban</span><span class="o">.</span><span class="n">result</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;When Zoe was banned on the Red side, they won &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">redzoebanwin</span><span class="p">))</span> <span class="o">+</span> <span class="s2">&quot; out of &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">redzoeban</span><span class="p">))</span> <span class="o">+</span> <span class="s2">&quot; games (&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">redzoebanwin</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">redzoeban</span><span class="p">))</span> <span class="o">+</span> <span class="s2">&quot;%)&quot;</span><span class="p">)</span> 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;and lost &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">redzoeban</span><span class="p">)</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="n">redzoebanwin</span><span class="p">))</span> <span class="o">+</span> <span class="s2">&quot; out of &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">redzoeban</span><span class="p">))</span> <span class="o">+</span> <span class="s2">&quot; games (&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="mi">100</span><span class="o">-</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">redzoebanwin</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">redzoeban</span><span class="p">)))</span> <span class="o">+</span> <span class="s2">&quot;%)&quot;</span><span class="p">)</span>
 
-<span class="c1">## This would give us a dataframe of all the matches that the blue team </span>
-<span class="c1">## won among those where the red team banned Zoe</span>
 <span class="n">bluezoebanwin</span> <span class="o">=</span> <span class="n">bluezoeban</span><span class="p">[</span><span class="n">bluezoeban</span><span class="o">.</span><span class="n">result</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;When Zoe was banned on the Blue side, they won &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">bluezoebanwin</span><span class="p">))</span> <span class="o">+</span> <span class="s2">&quot; out of &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">bluezoeban</span><span class="p">))</span> <span class="o">+</span> <span class="s2">&quot; games (&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">bluezoebanwin</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">bluezoeban</span><span class="p">))</span> <span class="o">+</span> <span class="s2">&quot;%)&quot;</span><span class="p">)</span> 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;and lost &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">bluezoeban</span><span class="p">)</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="n">bluezoebanwin</span><span class="p">))</span> <span class="o">+</span> <span class="s2">&quot; out of &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">bluezoeban</span><span class="p">))</span> <span class="o">+</span> <span class="s2">&quot; games (&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="mi">100</span><span class="o">-</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">bluezoebanwin</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">bluezoeban</span><span class="p">)))</span> <span class="o">+</span> <span class="s2">&quot;%)&quot;</span><span class="p">)</span>
-
-<span class="c1"># After the ban phase, the winrate is based more heavily on the team&#39;s execution of the game instead of solely on this one champion being banned</span>
-<span class="c1"># because in all of these cases, the Zoe ban is the control variable because it is not changing in any of these cases</span>
 </pre></div>
 
 </div>
@@ -16070,24 +13940,26 @@ and lost 53 out of 103 games (51.45631067961165%)
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>After the ban phase, the winrate is based more heavily on the team's execution of the game instead of solely on this one champion being banned because in all of these cases, the Zoe ban is the control variable since it is not changing in any of these cases. </p><p><b>Who is the most banned character? Does banning this character make your team more likely to win?</b></p>
+<p>
+We want to take the task some conventional wisdom that may be floating around the community about which characters you should ban if you want to increase your chances to win. Let's see if this holds water.
+</p>
+<p>
+First we need to find the most banned character. Probably lots of ways to get at this, but one thign we can do is a groupy by each ban slot as before, for each building a dictionary giving banned champions as keys and the number of matches they were banned in as values:
+</p>
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[49]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Who is the most banned character? Does banning this character make </span>
-<span class="c1">## your team more likely to win?</span>
-
-<span class="c1">## We want to take the task some conventional wisdom that may be floating</span>
-<span class="c1">## around the community about which characters you should ban if you want </span>
-<span class="c1">## to increase your chances to win. Let&#39;s see if this holds water.</span>
-
-<span class="c1">## First we need to find the most banned character. Probably lots of ways</span>
-<span class="c1">## to get at this, but one thign we can do is a groupy by each ban slot as</span>
-<span class="c1">## before, for each building a dictionary giving banned champions as keys</span>
-<span class="c1">## and the number of matches they were banned in as values:</span>
-
-<span class="n">allbans</span> <span class="o">=</span> <span class="n">league</span><span class="p">[(</span><span class="n">league</span><span class="o">.</span><span class="n">position</span> <span class="o">==</span> <span class="s2">&quot;Team&quot;</span><span class="p">)][</span><span class="n">league</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">9</span><span class="p">:</span><span class="mi">15</span><span class="p">]]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">allbans</span> <span class="o">=</span> <span class="n">league</span><span class="p">[(</span><span class="n">league</span><span class="o">.</span><span class="n">position</span> <span class="o">==</span> <span class="s2">&quot;Team&quot;</span><span class="p">)][</span><span class="n">league</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">9</span><span class="p">:</span><span class="mi">15</span><span class="p">]]</span>
 <span class="n">bans1</span> <span class="o">=</span> <span class="n">allbans</span><span class="p">[</span><span class="s1">&#39;ban1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
 <span class="n">bans2</span> <span class="o">=</span> <span class="n">allbans</span><span class="p">[</span><span class="s1">&#39;ban2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
 <span class="n">bans3</span> <span class="o">=</span> <span class="n">allbans</span><span class="p">[</span><span class="s1">&#39;ban3&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
@@ -16110,7 +13982,7 @@ and lost 53 out of 103 games (51.45631067961165%)
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[9]:</div>
+<div class="prompt output_prompt">Out[49]:</div>
 
 
 
@@ -16168,17 +14040,20 @@ and lost 53 out of 103 games (51.45631067961165%)
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>So we have our answer. The most banned champion across the major regions is <b>Aatrox</b>.</p><p>Out of curiosity, what's the distribution of bans look like acrosss champions?</p>
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="prompt input_prompt">In&nbsp;[50]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## So we have our answer. The most banned champion across the major regions</span>
-<span class="c1">## is Aatrox.</span>
-
-<span class="c1">## Out of curiosity, what&#39;s the distribution of bans look like acrosss</span>
-<span class="c1">## champions?</span>
-<span class="n">a4_dims</span> <span class="o">=</span> <span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">22</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">a4_dims</span> <span class="o">=</span> <span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">22</span><span class="p">)</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="n">a4_dims</span><span class="p">)</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">bansdf</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;bancount&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">bansdf</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
 </pre></div>
@@ -16193,13 +14068,13 @@ and lost 53 out of 103 games (51.45631067961165%)
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[18]:</div>
+<div class="prompt output_prompt">Out[50]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fbb4f37ddd8&gt;</pre>
+<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f3992037b70&gt;</pre>
 </div>
 
 </div>
@@ -16223,18 +14098,23 @@ and lost 53 out of 103 games (51.45631067961165%)
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><b>Does banning Aatrox make you more likely to win?</b></p>
+<p>Lets do the same analysis for Aatrox as we did for Zoe</p>
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[19]:</div>
+<div class="prompt input_prompt">In&nbsp;[51]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Does banning Aatrox make you more likely to win?</span>
-
-<span class="c1">## We&#39;ll do the same anaylsis we did for Zoe, but now for Aatrox,</span>
-<span class="c1">## And we&#39;ll do the same for the red team</span>
-<span class="n">redban</span> <span class="o">=</span>  <span class="n">league</span><span class="p">[(</span><span class="n">league</span><span class="o">.</span><span class="n">side</span> <span class="o">==</span> <span class="s2">&quot;Red&quot;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">league</span><span class="o">.</span><span class="n">position</span> <span class="o">==</span> <span class="s2">&quot;Team&quot;</span><span class="p">)]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">redban</span> <span class="o">=</span>  <span class="n">league</span><span class="p">[(</span><span class="n">league</span><span class="o">.</span><span class="n">side</span> <span class="o">==</span> <span class="s2">&quot;Red&quot;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">league</span><span class="o">.</span><span class="n">position</span> <span class="o">==</span> <span class="s2">&quot;Team&quot;</span><span class="p">)]</span>
 <span class="n">redaatroxban</span> <span class="o">=</span> <span class="n">redban</span><span class="p">[((</span><span class="n">league</span><span class="o">.</span><span class="n">ban1</span> <span class="o">==</span> <span class="s2">&quot;Aatrox&quot;</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">league</span><span class="o">.</span><span class="n">ban2</span> <span class="o">==</span> <span class="s2">&quot;Aatrox&quot;</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">league</span><span class="o">.</span><span class="n">ban3</span> <span class="o">==</span> <span class="s2">&quot;Aatrox&quot;</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">league</span><span class="o">.</span><span class="n">ban4</span> <span class="o">==</span> <span class="s2">&quot;Aatrox&quot;</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">league</span><span class="o">.</span><span class="n">ban5</span> <span class="o">==</span> <span class="s2">&quot;Aatrox&quot;</span><span class="p">))]</span>
-<span class="n">redaatroxban</span>
+<span class="n">redaatroxban</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 
 </div>
@@ -16247,7 +14127,7 @@ and lost 53 out of 103 games (51.45631067961165%)
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[19]:</div>
+<div class="prompt output_prompt">Out[51]:</div>
 
 
 
@@ -16384,1073 +14264,8 @@ and lost 53 out of 103 games (51.45631067961165%)
       <td>Vladimir</td>
       <td>1.0</td>
     </tr>
-    <tr>
-      <th>599</th>
-      <td>NALCS</td>
-      <td>2018-2</td>
-      <td>43268.73743</td>
-      <td>1</td>
-      <td>2</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>OpTic Gaming</td>
-      <td></td>
-      <td>Zoe</td>
-      <td>Irelia</td>
-      <td>Brand</td>
-      <td>Aatrox</td>
-      <td>Dr. Mundo</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>623</th>
-      <td>NALCS</td>
-      <td>2018-2</td>
-      <td>43267.78785</td>
-      <td>1</td>
-      <td>1</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>FlyQuest</td>
-      <td></td>
-      <td>Camille</td>
-      <td>Taliyah</td>
-      <td>Graves</td>
-      <td>Vladimir</td>
-      <td>Aatrox</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>659</th>
-      <td>LCK</td>
-      <td>2018-2</td>
-      <td>43270.23981</td>
-      <td>2.1</td>
-      <td>1</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>BBQ Olivers</td>
-      <td></td>
-      <td>Shen</td>
-      <td>Lulu</td>
-      <td>Aatrox</td>
-      <td>Blitzcrank</td>
-      <td>Rakan</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>683</th>
-      <td>LCK</td>
-      <td>2018-2</td>
-      <td>43270.95951</td>
-      <td>2.2</td>
-      <td>1</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Jin Air Green Wings</td>
-      <td></td>
-      <td>Shen</td>
-      <td>Camille</td>
-      <td>Master Yi</td>
-      <td>Dr. Mundo</td>
-      <td>Aatrox</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>839</th>
-      <td>LCK</td>
-      <td>2018-2</td>
-      <td>43273.08652</td>
-      <td>2.4</td>
-      <td>1</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>SK Telecom T1</td>
-      <td></td>
-      <td>Trundle</td>
-      <td>Aatrox</td>
-      <td>Rakan</td>
-      <td>Soraka</td>
-      <td>Singed</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>959</th>
-      <td>EULCS</td>
-      <td>2018-2</td>
-      <td>43274.4515</td>
-      <td>2</td>
-      <td>2</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Giants Gaming</td>
-      <td></td>
-      <td>Zoe</td>
-      <td>Aatrox</td>
-      <td>Darius</td>
-      <td>Draven</td>
-      <td>Aurelion Sol</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>1115</th>
-      <td>NALCS</td>
-      <td>2018-2</td>
-      <td>43275.57369</td>
-      <td>2</td>
-      <td>2</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>OpTic Gaming</td>
-      <td></td>
-      <td>Nocturne</td>
-      <td>Kai'sa</td>
-      <td>Irelia</td>
-      <td>Aatrox</td>
-      <td>Zoe</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>1439</th>
-      <td>LCK</td>
-      <td>2018-2</td>
-      <td>43280.10262</td>
-      <td>3.4</td>
-      <td>1</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>MVP</td>
-      <td></td>
-      <td>Aatrox</td>
-      <td>Nocturne</td>
-      <td>Taliyah</td>
-      <td>Anivia</td>
-      <td>Olaf</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>1499</th>
-      <td>EULCS</td>
-      <td>2018-2</td>
-      <td>43280.48891</td>
-      <td>3</td>
-      <td>1</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Schalke 04</td>
-      <td></td>
-      <td>Taliyah</td>
-      <td>Aatrox</td>
-      <td>Nocturne</td>
-      <td>Rakan</td>
-      <td>Morgana</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>1559</th>
-      <td>EULCS</td>
-      <td>2018-2</td>
-      <td>43281.43785</td>
-      <td>3</td>
-      <td>2</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Schalke 04</td>
-      <td></td>
-      <td>Aatrox</td>
-      <td>Nocturne</td>
-      <td>Swain</td>
-      <td>Mordekaiser</td>
-      <td>Ryze</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>1619</th>
-      <td>NALCS</td>
-      <td>2018-2</td>
-      <td>43281.70038</td>
-      <td>3</td>
-      <td>1</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Echo Fox</td>
-      <td></td>
-      <td>Aatrox</td>
-      <td>Swain</td>
-      <td>Lucian</td>
-      <td>Ornn</td>
-      <td>Dr. Mundo</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>1691</th>
-      <td>NALCS</td>
-      <td>2018-2</td>
-      <td>43282.65618</td>
-      <td>3</td>
-      <td>2</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Team Liquid</td>
-      <td></td>
-      <td>Xayah</td>
-      <td>Taliyah</td>
-      <td>Nocturne</td>
-      <td>Skarner</td>
-      <td>Aatrox</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>1703</th>
-      <td>NALCS</td>
-      <td>2018-2</td>
-      <td>43282.69465</td>
-      <td>3</td>
-      <td>2</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Echo Fox</td>
-      <td></td>
-      <td>Tahm Kench</td>
-      <td>Nocturne</td>
-      <td>Swain</td>
-      <td>Aatrox</td>
-      <td>Ornn</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>1715</th>
-      <td>NALCS</td>
-      <td>2018-2</td>
-      <td>43282.73686</td>
-      <td>3</td>
-      <td>2</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>OpTic Gaming</td>
-      <td></td>
-      <td>Taliyah</td>
-      <td>Nocturne</td>
-      <td>Aatrox</td>
-      <td>Darius</td>
-      <td>Lulu</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>1811</th>
-      <td>LCK</td>
-      <td>2018-2</td>
-      <td>43282.23799</td>
-      <td>3.6</td>
-      <td>1</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>MVP</td>
-      <td></td>
-      <td>Aatrox</td>
-      <td>Taliyah</td>
-      <td>Nocturne</td>
-      <td>Ashe</td>
-      <td>Varus</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>1859</th>
-      <td>LCK</td>
-      <td>2018-2</td>
-      <td>43292.19938</td>
-      <td>4.1</td>
-      <td>1</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Hanwha Life Esports</td>
-      <td></td>
-      <td>Aatrox</td>
-      <td>Taliyah</td>
-      <td>Nocturne</td>
-      <td>Darius</td>
-      <td>Kennen</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>1871</th>
-      <td>LCK</td>
-      <td>2018-2</td>
-      <td>43292.2772</td>
-      <td>4.1</td>
-      <td>2</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>KT Rolster</td>
-      <td></td>
-      <td>Zoe</td>
-      <td>Aatrox</td>
-      <td>Taliyah</td>
-      <td>Pyke</td>
-      <td>Ashe</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>1883</th>
-      <td>LCK</td>
-      <td>2018-2</td>
-      <td>43293.07422</td>
-      <td>4.2</td>
-      <td>1</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Jin Air Green Wings</td>
-      <td></td>
-      <td>Aatrox</td>
-      <td>Pyke</td>
-      <td>Taliyah</td>
-      <td>Vladimir</td>
-      <td>Ezreal</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>1895</th>
-      <td>LCK</td>
-      <td>2018-2</td>
-      <td>43293.15352</td>
-      <td>4.2</td>
-      <td>2</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>BBQ Olivers</td>
-      <td></td>
-      <td>Zoe</td>
-      <td>Aatrox</td>
-      <td>Varus</td>
-      <td>Ezreal</td>
-      <td>Galio</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>1907</th>
-      <td>LCK</td>
-      <td>2018-2</td>
-      <td>43293.2181</td>
-      <td>4.2</td>
-      <td>1</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Kingzone DragonX</td>
-      <td></td>
-      <td>Sion</td>
-      <td>Aatrox</td>
-      <td>Taliyah</td>
-      <td>Syndra</td>
-      <td>Lulu</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>1919</th>
-      <td>LCK</td>
-      <td>2018-2</td>
-      <td>43293.29485</td>
-      <td>4.2</td>
-      <td>2</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>MVP</td>
-      <td></td>
-      <td>Taliyah</td>
-      <td>Nocturne</td>
-      <td>Aatrox</td>
-      <td>Soraka</td>
-      <td>Vladimir</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>1931</th>
-      <td>LCK</td>
-      <td>2018-2</td>
-      <td>43294.11376</td>
-      <td>4.3</td>
-      <td>1</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Gen.G</td>
-      <td></td>
-      <td>Vladimir</td>
-      <td>Aatrox</td>
-      <td>Zoe</td>
-      <td>Yasuo</td>
-      <td>Sejuani</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>1943</th>
-      <td>LCK</td>
-      <td>2018-2</td>
-      <td>43294.15858</td>
-      <td>4.3</td>
-      <td>2</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Griffin</td>
-      <td></td>
-      <td>Rakan</td>
-      <td>Taliyah</td>
-      <td>Aatrox</td>
-      <td>Yasuo</td>
-      <td>Talon</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>1955</th>
-      <td>LCK</td>
-      <td>2018-2</td>
-      <td>43294.19771</td>
-      <td>4.3</td>
-      <td>3</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Gen.G</td>
-      <td></td>
-      <td>Vladimir</td>
-      <td>Aatrox</td>
-      <td>Nocturne</td>
-      <td>Trundle</td>
-      <td>Talon</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>1967</th>
-      <td>LCK</td>
-      <td>2018-2</td>
-      <td>43294.26237</td>
-      <td>4.3</td>
-      <td>1</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>SK Telecom T1</td>
-      <td></td>
-      <td>Aatrox</td>
-      <td>Taliyah</td>
-      <td>Nocturne</td>
-      <td>Taric</td>
-      <td>Varus</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>4943</th>
-      <td>NALCS</td>
-      <td>2018-2</td>
-      <td>43332.73719</td>
-      <td>T</td>
-      <td>T</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>FlyQuest</td>
-      <td></td>
-      <td>Rakan</td>
-      <td>Kindred</td>
-      <td>Aatrox</td>
-      <td>Lucian</td>
-      <td>Akali</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>4955</th>
-      <td>NALCS</td>
-      <td>2018-2</td>
-      <td>43332.78333</td>
-      <td>T</td>
-      <td>T</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>FlyQuest</td>
-      <td></td>
-      <td>Aatrox</td>
-      <td>Akali</td>
-      <td>Zilean</td>
-      <td>Ezreal</td>
-      <td>Ashe</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>4967</th>
-      <td>NALCS</td>
-      <td>2018-2</td>
-      <td>43332.82131</td>
-      <td>T</td>
-      <td>T</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Echo Fox</td>
-      <td></td>
-      <td>Aatrox</td>
-      <td>Rakan</td>
-      <td>Braum</td>
-      <td>Morgana</td>
-      <td>Jayce</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>4979</th>
-      <td>EULCS</td>
-      <td>2018-2rq</td>
-      <td>43357.53883</td>
-      <td>R1</td>
-      <td>3</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Splyce</td>
-      <td></td>
-      <td>Draven</td>
-      <td>Kalista</td>
-      <td>Rakan</td>
-      <td>Olaf</td>
-      <td>Aatrox</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>5075</th>
-      <td>EULCS</td>
-      <td>2018-2p</td>
-      <td>43337.44623</td>
-      <td>QF</td>
-      <td>2</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Misfits</td>
-      <td></td>
-      <td>Akali</td>
-      <td>Heimerdinger</td>
-      <td>Olaf</td>
-      <td>Aatrox</td>
-      <td>Gnar</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>5147</th>
-      <td>EULCS</td>
-      <td>2018-2rq</td>
-      <td>43359.5239</td>
-      <td>R3</td>
-      <td>4</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Schalke 04</td>
-      <td></td>
-      <td>Aatrox</td>
-      <td>Heimerdinger</td>
-      <td>Tahm Kench</td>
-      <td>Sion</td>
-      <td>Ornn</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>5219</th>
-      <td>LCK</td>
-      <td>2018-2</td>
-      <td>43321.20259</td>
-      <td>8.3</td>
-      <td>1</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>KT Rolster</td>
-      <td></td>
-      <td>Aatrox</td>
-      <td>Taliyah</td>
-      <td>Trundle</td>
-      <td>Gangplank</td>
-      <td>Skarner</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>5231</th>
-      <td>LCK</td>
-      <td>2018-2</td>
-      <td>43321.27792</td>
-      <td>8.3</td>
-      <td>2</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>MVP</td>
-      <td></td>
-      <td>Aatrox</td>
-      <td>Taliyah</td>
-      <td>Tahm Kench</td>
-      <td>Jayce</td>
-      <td>Kennen</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>5459</th>
-      <td>LCK</td>
-      <td>2018-2p</td>
-      <td>43351.18032</td>
-      <td>F</td>
-      <td>2</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>KT Rolster</td>
-      <td></td>
-      <td>Aatrox</td>
-      <td>Tahm Kench</td>
-      <td>Trundle</td>
-      <td>Cho'gath</td>
-      <td>Gnar</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>5471</th>
-      <td>LCK</td>
-      <td>2018-2p</td>
-      <td>43351.22718</td>
-      <td>F</td>
-      <td>3</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>KT Rolster</td>
-      <td></td>
-      <td>Aatrox</td>
-      <td>Trundle</td>
-      <td>Gragas</td>
-      <td>Tristana</td>
-      <td>Xayah</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>5483</th>
-      <td>LCK</td>
-      <td>2018-2p</td>
-      <td>43351.27497</td>
-      <td>F</td>
-      <td>4</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>KT Rolster</td>
-      <td></td>
-      <td>Aatrox</td>
-      <td>Urgot</td>
-      <td>Tahm Kench</td>
-      <td>Cho'gath</td>
-      <td>Ornn</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>5699</th>
-      <td>LCK</td>
-      <td>2018-2rq</td>
-      <td>43355.10764</td>
-      <td>R1</td>
-      <td>1</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>SK Telecom T1</td>
-      <td></td>
-      <td>Aatrox</td>
-      <td>Rakan</td>
-      <td>Tahm Kench</td>
-      <td>LeBlanc</td>
-      <td>Olaf</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>5711</th>
-      <td>LCK</td>
-      <td>2018-2rq</td>
-      <td>43355.15729</td>
-      <td>R1</td>
-      <td>2</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>SK Telecom T1</td>
-      <td></td>
-      <td>Aatrox</td>
-      <td>Rakan</td>
-      <td>Gragas</td>
-      <td>Olaf</td>
-      <td>Zac</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>5723</th>
-      <td>LCK</td>
-      <td>2018-2rq</td>
-      <td>43355.19654</td>
-      <td>R1</td>
-      <td>3</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>SK Telecom T1</td>
-      <td></td>
-      <td>Aatrox</td>
-      <td>Rakan</td>
-      <td>Gragas</td>
-      <td>Zoe</td>
-      <td>Olaf</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>5735</th>
-      <td>LCK</td>
-      <td>2018-2rq</td>
-      <td>43355.22543</td>
-      <td>R1</td>
-      <td>4</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>SK Telecom T1</td>
-      <td></td>
-      <td>Aatrox</td>
-      <td>Rakan</td>
-      <td>Taliyah</td>
-      <td>Zoe</td>
-      <td>Gangplank</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>5747</th>
-      <td>LCK</td>
-      <td>2018-2rq</td>
-      <td>43355.30716</td>
-      <td>R1</td>
-      <td>5</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>SK Telecom T1</td>
-      <td></td>
-      <td>Aatrox</td>
-      <td>Rakan</td>
-      <td>Taliyah</td>
-      <td>Galio</td>
-      <td>Kennen</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>5807</th>
-      <td>LCK</td>
-      <td>2018-2rq</td>
-      <td>43357.27334</td>
-      <td>R2</td>
-      <td>5</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Gen.G</td>
-      <td></td>
-      <td>Taliyah</td>
-      <td>Kai'sa</td>
-      <td>Aatrox</td>
-      <td>Galio</td>
-      <td>Irelia</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>5831</th>
-      <td>EULCS</td>
-      <td>2018-2rq</td>
-      <td>43357.49601</td>
-      <td>R1</td>
-      <td>2</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Splyce</td>
-      <td></td>
-      <td>Draven</td>
-      <td>Rakan</td>
-      <td>Kalista</td>
-      <td>Aatrox</td>
-      <td>Olaf</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>5879</th>
-      <td>EULCS</td>
-      <td>2018-2rq</td>
-      <td>43358.48383</td>
-      <td>R2</td>
-      <td>3</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Splyce</td>
-      <td></td>
-      <td>Swain</td>
-      <td>Akali</td>
-      <td>Rakan</td>
-      <td>Aatrox</td>
-      <td>Cassiopeia</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>5891</th>
-      <td>EULCS</td>
-      <td>2018-2rq</td>
-      <td>43358.52574</td>
-      <td>R2</td>
-      <td>4</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Splyce</td>
-      <td></td>
-      <td>Swain</td>
-      <td>Akali</td>
-      <td>Rakan</td>
-      <td>Aatrox</td>
-      <td>Jhin</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>5963</th>
-      <td>NALCS</td>
-      <td>2018-2rq</td>
-      <td>43358.76154</td>
-      <td>R2</td>
-      <td>3</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Echo Fox</td>
-      <td></td>
-      <td>Akali</td>
-      <td>Aatrox</td>
-      <td>Olaf</td>
-      <td>Irelia</td>
-      <td>Vel'koz</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>5999</th>
-      <td>LCK</td>
-      <td>2018-2rq</td>
-      <td>43359.20038</td>
-      <td>R3</td>
-      <td>3</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Kingzone DragonX</td>
-      <td></td>
-      <td>Malzahar</td>
-      <td>Alistar</td>
-      <td>Aatrox</td>
-      <td>Lee Sin</td>
-      <td>Urgot</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>15923</th>
-      <td>LPL</td>
-      <td>2018-2rq</td>
-      <td></td>
-      <td>R2</td>
-      <td>3</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Edward Gaming</td>
-      <td></td>
-      <td>Ryze</td>
-      <td>Akali</td>
-      <td>Aatrox</td>
-      <td>Skarner</td>
-      <td>Lee Sin</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>15935</th>
-      <td>LPL</td>
-      <td>2018-2rq</td>
-      <td></td>
-      <td>R2</td>
-      <td>4</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Edward Gaming</td>
-      <td></td>
-      <td>Aatrox</td>
-      <td>Akali</td>
-      <td>Kled</td>
-      <td>Miss Fortune</td>
-      <td>Ornn</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>15947</th>
-      <td>LPL</td>
-      <td>2018-2rq</td>
-      <td></td>
-      <td>R1</td>
-      <td>1</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Edward Gaming</td>
-      <td></td>
-      <td>Aatrox</td>
-      <td>Tahm Kench</td>
-      <td>Swain</td>
-      <td>Camille</td>
-      <td>Urgot</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>16055</th>
-      <td>LMS</td>
-      <td>2018-2rq</td>
-      <td>43364.18434</td>
-      <td>R2</td>
-      <td>1</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Machi 17</td>
-      <td></td>
-      <td>Akali</td>
-      <td>Aatrox</td>
-      <td>Urgot</td>
-      <td>Irelia</td>
-      <td>Vel'koz</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>16067</th>
-      <td>LMS</td>
-      <td>2018-2rq</td>
-      <td>43364.23135</td>
-      <td>R2</td>
-      <td>2</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Machi 17</td>
-      <td></td>
-      <td>Akali</td>
-      <td>Aatrox</td>
-      <td>Urgot</td>
-      <td>Galio</td>
-      <td>LeBlanc</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>16079</th>
-      <td>LMS</td>
-      <td>2018-2rq</td>
-      <td>43364.28314</td>
-      <td>R2</td>
-      <td>3</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Machi 17</td>
-      <td></td>
-      <td>Akali</td>
-      <td>Tahm Kench</td>
-      <td>Aatrox</td>
-      <td>Gangplank</td>
-      <td>Tristana</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>16103</th>
-      <td>LMS</td>
-      <td>2018-2rq</td>
-      <td>43364.35368</td>
-      <td>R2</td>
-      <td>5</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Machi 17</td>
-      <td></td>
-      <td>Akali</td>
-      <td>Tahm Kench</td>
-      <td>Aatrox</td>
-      <td>Camille</td>
-      <td>Ornn</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>16127</th>
-      <td>LMS</td>
-      <td>2018-2rq</td>
-      <td>43365.2349</td>
-      <td>R3</td>
-      <td>2</td>
-      <td>Red</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>G-Rex</td>
-      <td></td>
-      <td>Akali</td>
-      <td>Aatrox</td>
-      <td>Tahm Kench</td>
-      <td>Galio</td>
-      <td>Azir</td>
-      <td>1.0</td>
-    </tr>
   </tbody>
 </table>
-<p>283 rows × 16 columns</p>
 </div>
 </div>
 
@@ -17462,12 +14277,12 @@ and lost 53 out of 103 games (51.45631067961165%)
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[20]:</div>
+<div class="prompt input_prompt">In&nbsp;[52]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">blueban</span> <span class="o">=</span>  <span class="n">league</span><span class="p">[(</span><span class="n">league</span><span class="o">.</span><span class="n">side</span> <span class="o">==</span> <span class="s2">&quot;Blue&quot;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">league</span><span class="o">.</span><span class="n">position</span> <span class="o">==</span> <span class="s2">&quot;Team&quot;</span><span class="p">)]</span>
 <span class="n">blueaatroxban</span> <span class="o">=</span> <span class="n">blueban</span><span class="p">[((</span><span class="n">league</span><span class="o">.</span><span class="n">ban1</span> <span class="o">==</span> <span class="s2">&quot;Aatrox&quot;</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">league</span><span class="o">.</span><span class="n">ban2</span> <span class="o">==</span> <span class="s2">&quot;Aatrox&quot;</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">league</span><span class="o">.</span><span class="n">ban3</span> <span class="o">==</span> <span class="s2">&quot;Aatrox&quot;</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">league</span><span class="o">.</span><span class="n">ban4</span> <span class="o">==</span> <span class="s2">&quot;Aatrox&quot;</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">league</span><span class="o">.</span><span class="n">ban5</span> <span class="o">==</span> <span class="s2">&quot;Aatrox&quot;</span><span class="p">))]</span>
-<span class="n">blueaatroxban</span>
+<span class="n">blueaatroxban</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 
 </div>
@@ -17480,7 +14295,7 @@ and lost 53 out of 103 games (51.45631067961165%)
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[20]:</div>
+<div class="prompt output_prompt">Out[52]:</div>
 
 
 
@@ -17617,1073 +14432,8 @@ and lost 53 out of 103 games (51.45631067961165%)
       <td>Aatrox</td>
       <td>1.0</td>
     </tr>
-    <tr>
-      <th>730</th>
-      <td>LCK</td>
-      <td>2018-2</td>
-      <td>43271.19071</td>
-      <td>2.2</td>
-      <td>3</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>SK Telecom T1</td>
-      <td></td>
-      <td>Master Yi</td>
-      <td>Aatrox</td>
-      <td>Swain</td>
-      <td>Morgana</td>
-      <td>Lucian</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>742</th>
-      <td>LCK</td>
-      <td>2018-2</td>
-      <td>43271.22718</td>
-      <td>2.2</td>
-      <td>1</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Gen.G</td>
-      <td></td>
-      <td>Swain</td>
-      <td>Nocturne</td>
-      <td>Aatrox</td>
-      <td>Zoe</td>
-      <td>Irelia</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>790</th>
-      <td>LCK</td>
-      <td>2018-2</td>
-      <td>43272.2015</td>
-      <td>2.3</td>
-      <td>2</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Afreeca Freecs</td>
-      <td></td>
-      <td>Ezreal</td>
-      <td>Dr. Mundo</td>
-      <td>Trundle</td>
-      <td>Morgana</td>
-      <td>Aatrox</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>802</th>
-      <td>LCK</td>
-      <td>2018-2</td>
-      <td>43272.22463</td>
-      <td>2.3</td>
-      <td>3</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Kingzone DragonX</td>
-      <td></td>
-      <td>Yasuo</td>
-      <td>Vladimir</td>
-      <td>Swain</td>
-      <td>Aatrox</td>
-      <td>Rakan</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>898</th>
-      <td>EULCS</td>
-      <td>2018-2</td>
-      <td>43273.4834</td>
-      <td>2</td>
-      <td>1</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Roccat</td>
-      <td></td>
-      <td>Zoe</td>
-      <td>Nocturne</td>
-      <td>Aatrox</td>
-      <td>Dr. Mundo</td>
-      <td>Swain</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>910</th>
-      <td>EULCS</td>
-      <td>2018-2</td>
-      <td>43273.53319</td>
-      <td>2</td>
-      <td>1</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>G2 Esports</td>
-      <td></td>
-      <td>Ryze</td>
-      <td>Irelia</td>
-      <td>Camille</td>
-      <td>Aatrox</td>
-      <td>Poppy</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>922</th>
-      <td>EULCS</td>
-      <td>2018-2</td>
-      <td>43273.56743</td>
-      <td>2</td>
-      <td>1</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Fnatic</td>
-      <td></td>
-      <td>Camille</td>
-      <td>Fiddlesticks</td>
-      <td>Zoe</td>
-      <td>Aatrox</td>
-      <td>Darius</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>934</th>
-      <td>EULCS</td>
-      <td>2018-2</td>
-      <td>43273.60344</td>
-      <td>2</td>
-      <td>1</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Misfits</td>
-      <td></td>
-      <td>Yasuo</td>
-      <td>Nocturne</td>
-      <td>Vladimir</td>
-      <td>Aatrox</td>
-      <td>Darius</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>946</th>
-      <td>EULCS</td>
-      <td>2018-2</td>
-      <td>43274.39535</td>
-      <td>2</td>
-      <td>2</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Roccat</td>
-      <td></td>
-      <td>Aatrox</td>
-      <td>Zoe</td>
-      <td>Irelia</td>
-      <td>Dr. Mundo</td>
-      <td>Cassiopeia</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>982</th>
-      <td>EULCS</td>
-      <td>2018-2</td>
-      <td>43274.55985</td>
-      <td>2</td>
-      <td>2</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Fnatic</td>
-      <td></td>
-      <td>Zoe</td>
-      <td>Aatrox</td>
-      <td>Taliyah</td>
-      <td>Heimerdinger</td>
-      <td>Ziggs</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>994</th>
-      <td>NALCS</td>
-      <td>2018-2</td>
-      <td>43274.64623</td>
-      <td>2</td>
-      <td>1</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Counter Logic Gaming</td>
-      <td></td>
-      <td>Galio</td>
-      <td>Swain</td>
-      <td>Xayah</td>
-      <td>Dr. Mundo</td>
-      <td>Aatrox</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>1102</th>
-      <td>NALCS</td>
-      <td>2018-2</td>
-      <td>43274.82162</td>
-      <td>2</td>
-      <td>1</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Golden Guardians</td>
-      <td></td>
-      <td>Morgana</td>
-      <td>Nocturne</td>
-      <td>Irelia</td>
-      <td>Aatrox</td>
-      <td>Gangplank</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>1174</th>
-      <td>NALCS</td>
-      <td>2018-2</td>
-      <td>43275.74299</td>
-      <td>2</td>
-      <td>2</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Echo Fox</td>
-      <td></td>
-      <td>Shen</td>
-      <td>Tahm Kench</td>
-      <td>Zoe</td>
-      <td>Morgana</td>
-      <td>Aatrox</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>1294</th>
-      <td>LCK</td>
-      <td>2018-2</td>
-      <td>43277.96749</td>
-      <td>3.2</td>
-      <td>1</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>MVP</td>
-      <td></td>
-      <td>Braum</td>
-      <td>Kai'sa</td>
-      <td>Nocturne</td>
-      <td>Singed</td>
-      <td>Aatrox</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>1318</th>
-      <td>LCK</td>
-      <td>2018-2</td>
-      <td>43278.06317</td>
-      <td>3.2</td>
-      <td>1</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Gen.G</td>
-      <td></td>
-      <td>Aatrox</td>
-      <td>Swain</td>
-      <td>Kai'sa</td>
-      <td>Ezreal</td>
-      <td>Yasuo</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>1342</th>
-      <td>LCK</td>
-      <td>2018-2</td>
-      <td>43278.1958</td>
-      <td>3.2</td>
-      <td>3</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Gen.G</td>
-      <td></td>
-      <td>Swain</td>
-      <td>Aatrox</td>
-      <td>Morgana</td>
-      <td>Alistar</td>
-      <td>Pyke</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>1414</th>
-      <td>LCK</td>
-      <td>2018-2</td>
-      <td>43279.19536</td>
-      <td>3.3</td>
-      <td>1</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Kingzone DragonX</td>
-      <td></td>
-      <td>Yasuo</td>
-      <td>Irelia</td>
-      <td>Aatrox</td>
-      <td>Vel'koz</td>
-      <td>Talon</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>1426</th>
-      <td>LCK</td>
-      <td>2018-2</td>
-      <td>43279.27824</td>
-      <td>3.3</td>
-      <td>2</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>SK Telecom T1</td>
-      <td></td>
-      <td>Nocturne</td>
-      <td>Aatrox</td>
-      <td>Zoe</td>
-      <td>Jayce</td>
-      <td>Heimerdinger</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>1450</th>
-      <td>LCK</td>
-      <td>2018-2</td>
-      <td>43280.15883</td>
-      <td>3.4</td>
-      <td>2</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>MVP</td>
-      <td></td>
-      <td>Aatrox</td>
-      <td>Rakan</td>
-      <td>Nocturne</td>
-      <td>Darius</td>
-      <td>Gangplank</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>1474</th>
-      <td>LCK</td>
-      <td>2018-2</td>
-      <td>43280.28324</td>
-      <td>3.4</td>
-      <td>2</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Gen.G</td>
-      <td></td>
-      <td>Yasuo</td>
-      <td>Aatrox</td>
-      <td>Nocturne</td>
-      <td>Lucian</td>
-      <td>Morgana</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>1522</th>
-      <td>EULCS</td>
-      <td>2018-2</td>
-      <td>43280.56992</td>
-      <td>3</td>
-      <td>1</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Unicorns of Love</td>
-      <td></td>
-      <td>Aatrox</td>
-      <td>Zoe</td>
-      <td>Taliyah</td>
-      <td>Sejuani</td>
-      <td>Mordekaiser</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>1534</th>
-      <td>EULCS</td>
-      <td>2018-2</td>
-      <td>43280.60465</td>
-      <td>3</td>
-      <td>1</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Fnatic</td>
-      <td></td>
-      <td>Braum</td>
-      <td>Heimerdinger</td>
-      <td>Aatrox</td>
-      <td>Kai'Sa</td>
-      <td>Taric</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>1546</th>
-      <td>EULCS</td>
-      <td>2018-2</td>
-      <td>43281.39797</td>
-      <td>3</td>
-      <td>2</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Misfits</td>
-      <td></td>
-      <td>Vladimir</td>
-      <td>Swain</td>
-      <td>Aatrox</td>
-      <td>Kayle</td>
-      <td>Trundle</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>1570</th>
-      <td>EULCS</td>
-      <td>2018-2</td>
-      <td>43281.47648</td>
-      <td>3</td>
-      <td>2</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Giants Gaming</td>
-      <td></td>
-      <td>Ryze</td>
-      <td>Swain</td>
-      <td>Aatrox</td>
-      <td>Rakan</td>
-      <td>Alistar</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>1654</th>
-      <td>NALCS</td>
-      <td>2018-2</td>
-      <td>43281.81993</td>
-      <td>3</td>
-      <td>1</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>OpTic Gaming</td>
-      <td></td>
-      <td>Aatrox</td>
-      <td>Taliyah</td>
-      <td>Nocturne</td>
-      <td>Galio</td>
-      <td>Soraka</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>1822</th>
-      <td>LCK</td>
-      <td>2018-2</td>
-      <td>43282.27786</td>
-      <td>3.6</td>
-      <td>2</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>MVP</td>
-      <td></td>
-      <td>Aatrox</td>
-      <td>Taliyah</td>
-      <td>Swain</td>
-      <td>Alistar</td>
-      <td>Kennen</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>1846</th>
-      <td>LCK</td>
-      <td>2018-2</td>
-      <td>43292.15021</td>
-      <td>4.1</td>
-      <td>2</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Afreeca Freecs</td>
-      <td></td>
-      <td>Shen</td>
-      <td>Taliyah</td>
-      <td>Aatrox</td>
-      <td>Pyke</td>
-      <td>Alistar</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>3418</th>
-      <td>EULCS</td>
-      <td>2018-2</td>
-      <td>43309.53367</td>
-      <td>6</td>
-      <td>2</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Schalke 04</td>
-      <td></td>
-      <td>Heimerdinger</td>
-      <td>Brand</td>
-      <td>Aatrox</td>
-      <td>Trundle</td>
-      <td>Gnar</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>3442</th>
-      <td>NALCS</td>
-      <td>2018-2</td>
-      <td>43309.65867</td>
-      <td>6</td>
-      <td>1</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Team SoloMid</td>
-      <td></td>
-      <td>Morgana</td>
-      <td>Orianna</td>
-      <td>Aatrox</td>
-      <td>Ezreal</td>
-      <td>Ornn</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>3814</th>
-      <td>EULCS</td>
-      <td>2018-2</td>
-      <td>43315.43477</td>
-      <td>7</td>
-      <td>1</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Unicorns of Love</td>
-      <td></td>
-      <td>Zoe</td>
-      <td>Rumble</td>
-      <td>Aatrox</td>
-      <td>Jhin</td>
-      <td>Gnar</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>3874</th>
-      <td>EULCS</td>
-      <td>2018-2</td>
-      <td>43316.38602</td>
-      <td>7</td>
-      <td>2</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Roccat</td>
-      <td></td>
-      <td>Tahm Kench</td>
-      <td>Aatrox</td>
-      <td>Nocturne</td>
-      <td>Gragas</td>
-      <td>Sejuani</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>4162</th>
-      <td>NALCS</td>
-      <td>2018-2</td>
-      <td>43317.74189</td>
-      <td>7</td>
-      <td>2</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Clutch Gaming</td>
-      <td></td>
-      <td>Tahm Kench</td>
-      <td>Morgana</td>
-      <td>Aatrox</td>
-      <td>Ahri</td>
-      <td>Camille</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>4294</th>
-      <td>EULCS</td>
-      <td>2018-2</td>
-      <td>43322.44446</td>
-      <td>8</td>
-      <td>1</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Roccat</td>
-      <td></td>
-      <td>Zoe</td>
-      <td>Rumble</td>
-      <td>Aatrox</td>
-      <td>Ryze</td>
-      <td>Ezreal</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>4354</th>
-      <td>EULCS</td>
-      <td>2018-2</td>
-      <td>43323.39444</td>
-      <td>8</td>
-      <td>2</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Vitality</td>
-      <td></td>
-      <td>Fizz</td>
-      <td>Nocturne</td>
-      <td>Aatrox</td>
-      <td>Darius</td>
-      <td>Yasuo</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>4390</th>
-      <td>EULCS</td>
-      <td>2018-2</td>
-      <td>43323.56606</td>
-      <td>8</td>
-      <td>2</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Fnatic</td>
-      <td></td>
-      <td>Trundle</td>
-      <td>Aatrox</td>
-      <td>Taliyah</td>
-      <td>Rumble</td>
-      <td>Kennen</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>4678</th>
-      <td>EULCS</td>
-      <td>2018-2</td>
-      <td>43329.53127</td>
-      <td>9</td>
-      <td>1</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Giants Gaming</td>
-      <td></td>
-      <td>Varus</td>
-      <td>LeBlanc</td>
-      <td>Aatrox</td>
-      <td>Yasuo</td>
-      <td>Camille</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>4714</th>
-      <td>EULCS</td>
-      <td>2018-2</td>
-      <td>43330.39476</td>
-      <td>9</td>
-      <td>2</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Giants Gaming</td>
-      <td></td>
-      <td>Zoe</td>
-      <td>Tahm Kench</td>
-      <td>Aatrox</td>
-      <td>Rakan</td>
-      <td>Dr. Mundo</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>4750</th>
-      <td>EULCS</td>
-      <td>2018-2</td>
-      <td>43330.52545</td>
-      <td>9</td>
-      <td>2</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Fnatic</td>
-      <td></td>
-      <td>Trundle</td>
-      <td>Aatrox</td>
-      <td>Taliyah</td>
-      <td>Quinn</td>
-      <td>Ryze</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>4762</th>
-      <td>EULCS</td>
-      <td>2018-2</td>
-      <td>43330.56539</td>
-      <td>9</td>
-      <td>2</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Vitality</td>
-      <td></td>
-      <td>Varus</td>
-      <td>Akali</td>
-      <td>Aatrox</td>
-      <td>Yasuo</td>
-      <td>Rumble</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>4870</th>
-      <td>NALCS</td>
-      <td>2018-2</td>
-      <td>43331.57002</td>
-      <td>9</td>
-      <td>2</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>100 Thieves</td>
-      <td></td>
-      <td>Morgana</td>
-      <td>Akali</td>
-      <td>Aatrox</td>
-      <td>Gragas</td>
-      <td>Syndra</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>5062</th>
-      <td>EULCS</td>
-      <td>2018-2p</td>
-      <td>43337.39611</td>
-      <td>QF</td>
-      <td>1</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Misfits</td>
-      <td></td>
-      <td>Ryze</td>
-      <td>Heimerdinger</td>
-      <td>Akali</td>
-      <td>Ezreal</td>
-      <td>Aatrox</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>5122</th>
-      <td>EULCS</td>
-      <td>2018-2rq</td>
-      <td>43359.48661</td>
-      <td>R3</td>
-      <td>3</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Schalke 04</td>
-      <td></td>
-      <td>Heimerdinger</td>
-      <td>Olaf</td>
-      <td>Aatrox</td>
-      <td>Akali</td>
-      <td>Ryze</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>5494</th>
-      <td>LCK</td>
-      <td>2018-2p</td>
-      <td>43351.3422</td>
-      <td>F</td>
-      <td>5</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>KT Rolster</td>
-      <td></td>
-      <td>Yasuo</td>
-      <td>Tahm Kench</td>
-      <td>Aatrox</td>
-      <td>Irelia</td>
-      <td>Zoe</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>6022</th>
-      <td>EULCS</td>
-      <td>2018-2rq</td>
-      <td>43359.44662</td>
-      <td>R3</td>
-      <td>2</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Schalke 04</td>
-      <td></td>
-      <td>Heimerdinger</td>
-      <td>Aatrox</td>
-      <td>Olaf</td>
-      <td>Cassiopeia</td>
-      <td>Akali</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>15910</th>
-      <td>LPL</td>
-      <td>2018-2rq</td>
-      <td></td>
-      <td>R2</td>
-      <td>2</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Edward Gaming</td>
-      <td></td>
-      <td>Aatrox</td>
-      <td>Akali</td>
-      <td>Ryze</td>
-      <td>Zac</td>
-      <td>Kled</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>15958</th>
-      <td>LPL</td>
-      <td>2018-2rq</td>
-      <td></td>
-      <td>R1</td>
-      <td>2</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Edward Gaming</td>
-      <td></td>
-      <td>Aatrox</td>
-      <td>Gragas</td>
-      <td>Tahm Kench</td>
-      <td>Camille</td>
-      <td>Skarner</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>15970</th>
-      <td>LPL</td>
-      <td>2018-2rq</td>
-      <td></td>
-      <td>R1</td>
-      <td>3</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Edward Gaming</td>
-      <td></td>
-      <td>Tahm Kench</td>
-      <td>Aatrox</td>
-      <td>Gragas</td>
-      <td>LeBlanc</td>
-      <td>Azir</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>15994</th>
-      <td>LPL</td>
-      <td>2018-2rq</td>
-      <td></td>
-      <td>R1</td>
-      <td>5</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Edward Gaming</td>
-      <td></td>
-      <td>Tahm Kench</td>
-      <td>Aatrox</td>
-      <td>Lissandra</td>
-      <td>Galio</td>
-      <td>Ornn</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>16006</th>
-      <td>LMS</td>
-      <td>2018-2rq</td>
-      <td>43363.18905</td>
-      <td>R1</td>
-      <td>1</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Hong Kong Attitude</td>
-      <td></td>
-      <td>Rakan</td>
-      <td>Gragas</td>
-      <td>Aatrox</td>
-      <td>Sejuani</td>
-      <td>Camille</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>16030</th>
-      <td>LMS</td>
-      <td>2018-2rq</td>
-      <td>43363.30163</td>
-      <td>R1</td>
-      <td>3</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Hong Kong Attitude</td>
-      <td></td>
-      <td>Rakan</td>
-      <td>Gragas</td>
-      <td>Aatrox</td>
-      <td>Sion</td>
-      <td>Ornn</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>16090</th>
-      <td>LMS</td>
-      <td>2018-2rq</td>
-      <td>43364.3066</td>
-      <td>R2</td>
-      <td>4</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Machi 17</td>
-      <td></td>
-      <td>Akali</td>
-      <td>Aatrox</td>
-      <td>Gragas</td>
-      <td>LeBlanc</td>
-      <td>Irelia</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>16114</th>
-      <td>LMS</td>
-      <td>2018-2rq</td>
-      <td>43365.18361</td>
-      <td>R3</td>
-      <td>1</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>G-Rex</td>
-      <td></td>
-      <td>Akali</td>
-      <td>Tahm Kench</td>
-      <td>Aatrox</td>
-      <td>Taliyah</td>
-      <td>Galio</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>16138</th>
-      <td>LMS</td>
-      <td>2018-2rq</td>
-      <td>43365.27207</td>
-      <td>R3</td>
-      <td>3</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>G-Rex</td>
-      <td></td>
-      <td>Akali</td>
-      <td>Aatrox</td>
-      <td>Galio</td>
-      <td>Taliyah</td>
-      <td>Zac</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>16162</th>
-      <td>TCL</td>
-      <td>2018-2p</td>
-      <td>43359.30353</td>
-      <td>F</td>
-      <td>2</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Royal Bandits e-sports</td>
-      <td></td>
-      <td>Aatrox</td>
-      <td>Morgana</td>
-      <td>Akali</td>
-      <td>Gragas</td>
-      <td>Trundle</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>16186</th>
-      <td>TCL</td>
-      <td>2018-2p</td>
-      <td>43359.42644</td>
-      <td>F</td>
-      <td>4</td>
-      <td>Blue</td>
-      <td>Team</td>
-      <td>Team</td>
-      <td>Royal Bandits e-sports</td>
-      <td></td>
-      <td>Aatrox</td>
-      <td>Akali</td>
-      <td>Trundle</td>
-      <td>Orianna</td>
-      <td>Olaf</td>
-      <td>0.0</td>
-    </tr>
   </tbody>
 </table>
-<p>64 rows × 16 columns</p>
 </div>
 </div>
 
@@ -18695,47 +14445,10 @@ and lost 53 out of 103 games (51.45631067961165%)
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[21]:</div>
+<div class="prompt input_prompt">In&nbsp;[53]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## For red team bans, how many of those matches did the red team lose?</span>
-
-<span class="c1">## Did red team win more often than they lost? Here are the matches red </span>
-<span class="c1">## team won</span>
-<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Aatrox was banned &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">redaatroxban</span><span class="p">))</span> <span class="o">+</span>  <span class="s2">&quot; times out of &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">redban</span><span class="p">))</span> <span class="o">+</span> <span class="s2">&quot; Red side games (&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">redaatroxban</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">redban</span><span class="p">))</span> <span class="o">+</span> <span class="s2">&quot;%)&quot;</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Aatrox was banned 283 times out of 529 Red side games (53.497164461247635%)
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[22]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## What do we get for the case where blue team bans Aatrox?</span>
-
-<span class="c1">## Did blue team win more often than they lost? Here are the match blue won?</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Aatrox was banned &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">redaatroxban</span><span class="p">))</span> <span class="o">+</span>  <span class="s2">&quot; times out of &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">redban</span><span class="p">))</span> <span class="o">+</span> <span class="s2">&quot; Red side games (&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">redaatroxban</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">redban</span><span class="p">))</span> <span class="o">+</span> <span class="s2">&quot;%)&quot;</span><span class="p">)</span>
 <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Aatrox was banned &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">blueaatroxban</span><span class="p">))</span> <span class="o">+</span>  <span class="s2">&quot; times out of &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">blueban</span><span class="p">))</span> <span class="o">+</span> <span class="s2">&quot; Blue side games (&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">blueaatroxban</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">blueban</span><span class="p">))</span> <span class="o">+</span> <span class="s2">&quot;%)&quot;</span><span class="p">)</span>
 </pre></div>
 
@@ -18753,7 +14466,8 @@ and lost 53 out of 103 games (51.45631067961165%)
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Aatrox was banned 64 times out of 529 Blue side games (12.098298676748582%)
+<pre>Aatrox was banned 283 times out of 529 Red side games (53.497164461247635%)
+Aatrox was banned 64 times out of 529 Blue side games (12.098298676748582%)
 </pre>
 </div>
 </div>
@@ -18762,37 +14476,20 @@ and lost 53 out of 103 games (51.45631067961165%)
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[23]:</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Hmmm...maybe not a signal here...might not be much point overall to </span>
-<span class="c1">## banning Aatrox. However, it may be the case that if you ban Aatrox and perhaps </span>
-<span class="c1">## another character this improves your chances? That&#39;s an interesting </span>
-<span class="c1">## question for another time. Could it also be the case that banning </span>
-<span class="c1">## Aatrox levels the playing field?</span>
-</pre></div>
-
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Let's look at the overall ban rate compared to total games played for the most banned champion</p>
 </div>
 </div>
-</div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[24]:</div>
+<div class="prompt input_prompt">In&nbsp;[54]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## In a game where Aatrox wasn&#39;t banned, was he picked? Was the team more </span>
-<span class="c1">## likely win?</span>
-
-<span class="c1">## First we need matches where Aatrox was not banned. We&#39;ll get the games where Aatrox was picked.</span>
-<span class="c1">## From there we will look at the dataframe and look at the games where it was picked and they won.</span>
-<span class="n">picked</span> <span class="o">=</span> <span class="n">league</span><span class="p">[</span><span class="n">league</span><span class="o">.</span><span class="n">champion</span> <span class="o">==</span> <span class="s1">&#39;Aatrox&#39;</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">picked</span><span class="p">)))</span>
-<span class="n">picked_win</span> <span class="o">=</span> <span class="n">picked</span><span class="p">[</span><span class="n">picked</span><span class="o">.</span><span class="n">result</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span>
-<span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">picked_win</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">picked</span><span class="p">))</span> <span class="o">+</span> <span class="s2">&quot;%&quot;</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;In total, Aatrox was banned &quot;</span><span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">redaatroxban</span><span class="p">)</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">blueaatroxban</span><span class="p">))</span> <span class="o">+</span> <span class="s2">&quot; out of &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">blueban</span><span class="p">))</span> <span class="o">+</span> <span class="s2">&quot; games (&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">redaatroxban</span><span class="p">)</span><span class="o">+</span><span class="nb">len</span><span class="p">(</span><span class="n">blueaatroxban</span><span class="p">))</span><span class="o">*</span><span class="mi">100</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">redban</span><span class="p">))</span> <span class="o">+</span> <span class="s2">&quot;%)&quot;</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -18809,56 +14506,77 @@ and lost 53 out of 103 games (51.45631067961165%)
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>91
+<pre>In total, Aatrox was banned 347 out of 529 games (65.59546313799622%)
 </pre>
 </div>
 </div>
 
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[24]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>&#39;65.93406593406593%&#39;</pre>
-</div>
-
-</div>
-
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Aatrox seems to have a significantly high ban rate for some reason. Let's try to figure out why!</p><br/>
+
+<b>In a game where Aatrox wasn't banned, was he picked? Was the team more likely win?</b>
+<p>First we need matches where Aatrox was not banned. We'll get the games where Aatrox was picked. From there we will look at the dataframe and look at the games where it was picked and they won.</p>
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[25]:</div>
+<div class="prompt input_prompt">In&nbsp;[55]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## As we can see from the data the most banned champion has a ~66% win rate when picked, which is substantially high considering</span>
-<span class="c1">## that out of 91 games, there is still a 66% win rate, which gives indication that either the champion at the time of the season</span>
-<span class="c1">## gives the team such an advantage that it swings their chances of winning more often than not. </span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">picked</span> <span class="o">=</span> <span class="n">league</span><span class="p">[</span><span class="n">league</span><span class="o">.</span><span class="n">champion</span> <span class="o">==</span> <span class="s1">&#39;Aatrox&#39;</span><span class="p">]</span>
+<span class="n">picked_win</span> <span class="o">=</span> <span class="n">picked</span><span class="p">[</span><span class="n">picked</span><span class="o">.</span><span class="n">result</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Out of the &quot;</span><span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">picked</span><span class="p">))</span> <span class="o">+</span><span class="s2">&quot; times Aatrox was picked, he won &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">picked_win</span><span class="p">))</span> <span class="o">+</span> <span class="s2">&quot; times (&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">picked_win</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">picked</span><span class="p">))</span> <span class="o">+</span> <span class="s2">&quot;%)&quot;</span><span class="p">)</span>
 </pre></div>
 
 </div>
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Out of the 91 times Aatrox was picked, he won 60 times (65.93406593406593%)
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>As we can see from the data the most banned champion has a ~66% win rate when picked, which is substantially high considering that out of 91 games, there is still a 66% win rate, which gives indication that either the champion at the time of the season gives the team such an advantage that it swings their chances of winning more often than not. </p>
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[26]:</div>
+<div class="prompt input_prompt">In&nbsp;[56]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Now let&#39;s look at the overall ban rate compared to total games played for the most banned champion</span>
-<span class="n">picked</span> <span class="o">=</span> <span class="n">league</span><span class="p">[</span><span class="n">league</span><span class="o">.</span><span class="n">champion</span> <span class="o">==</span> <span class="s1">&#39;Aatrox&#39;</span><span class="p">]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">picked</span> <span class="o">=</span> <span class="n">league</span><span class="p">[</span><span class="n">league</span><span class="o">.</span><span class="n">champion</span> <span class="o">==</span> <span class="s1">&#39;Aatrox&#39;</span><span class="p">]</span>
 <span class="n">total_games</span> <span class="o">=</span> <span class="n">league</span><span class="p">[</span><span class="n">league</span><span class="o">.</span><span class="n">position</span> <span class="o">==</span> <span class="s1">&#39;Team&#39;</span><span class="p">]</span>
 <span class="n">num_games</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">total_games</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
-<span class="n">picked_rate</span> <span class="o">=</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">picked</span><span class="p">)</span><span class="o">/</span><span class="n">num_games</span><span class="p">)</span>
-<span class="nb">print</span> <span class="p">(</span><span class="n">picked_rate</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span>
-<span class="n">ban_rate</span> <span class="o">=</span>  <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">blueaatroxban</span><span class="p">)</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">redaatroxban</span><span class="p">))</span><span class="o">/</span><span class="n">num_games</span>
-<span class="nb">print</span> <span class="p">(</span><span class="n">ban_rate</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">picked_rate</span> <span class="o">=</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">picked</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">num_games</span><span class="o">-</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">blueaatroxban</span><span class="p">)</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">redaatroxban</span><span class="p">))))</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;When he is not banned, Aatrox is picked &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">picked_rate</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="si">% o</span><span class="s2">f the time&quot;</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -18875,8 +14593,7 @@ and lost 53 out of 103 games (51.45631067961165%)
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>17.20226843100189
-65.59546313799622
+<pre>When he is not banned, Aatrox is picked 50.0% of the time
 </pre>
 </div>
 </div>
@@ -18885,32 +14602,23 @@ and lost 53 out of 103 games (51.45631067961165%)
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[27]:</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## As we can see the most banned champion is banned  ~66% of the games and of those games that aren&#39;t there is a win rate of ~66%.</span>
-<span class="c1">## If we take this into perspective Aatrox is picked approximately half of the time it&#39;s up if not banned and of those times,</span>
-<span class="c1">## the team with Aatrox has a win rate of 66%. In addition, this makes Aatrox have 83% of games picked or banned.</span>
-</pre></div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>As we can see the most banned champion is banned  ~66% of the games and of those games that aren't there is a win rate of ~66%. If we take this into perspective Aatrox is picked approximately half of the time it's up if not banned and of those times, the team with Aatrox has a win rate of 66%. In addition, this makes Aatrox have 83% of games picked or banned.</p><p><b>Now let's look at the second most banned champion (Taliyah) and we'll do the same analysis</b></p>
 
 </div>
 </div>
 </div>
-
-</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[28]:</div>
+<div class="prompt input_prompt">In&nbsp;[57]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Now let&#39;s look at the second most banned champion (Taliyah).</span>
-<span class="c1">## And we&#39;ll do the same analysis</span>
-<span class="n">picked</span> <span class="o">=</span> <span class="n">league</span><span class="p">[</span><span class="n">league</span><span class="o">.</span><span class="n">champion</span> <span class="o">==</span> <span class="s1">&#39;Taliyah&#39;</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">picked</span><span class="p">)))</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">picked</span> <span class="o">=</span> <span class="n">league</span><span class="p">[</span><span class="n">league</span><span class="o">.</span><span class="n">champion</span> <span class="o">==</span> <span class="s1">&#39;Taliyah&#39;</span><span class="p">]</span>
 <span class="n">picked_win</span> <span class="o">=</span> <span class="n">picked</span><span class="p">[</span><span class="n">picked</span><span class="o">.</span><span class="n">result</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span>
-<span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">picked_win</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">picked</span><span class="p">))</span> <span class="o">+</span> <span class="s2">&quot;%&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Out of the &quot;</span><span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">picked</span><span class="p">))</span> <span class="o">+</span><span class="s2">&quot; times Taliyah was picked, they won &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">picked_win</span><span class="p">))</span> <span class="o">+</span> <span class="s2">&quot; times (&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">picked_win</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">picked</span><span class="p">))</span> <span class="o">+</span> <span class="s2">&quot;%)&quot;</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -18927,68 +14635,43 @@ and lost 53 out of 103 games (51.45631067961165%)
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>75
+<pre>Out of the 75 times Taliyah was picked, they won 45 times (60.0%)
 </pre>
 </div>
 </div>
 
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[28]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>&#39;60.0%&#39;</pre>
-</div>
-
-</div>
-
 </div>
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[29]:</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## As we can see from the data the second most banned champion has a 60% win rate when picked. If from these two data point we</span>
-<span class="c1">## we any correlation between the most banned champions. We can see that often times those most banned have more than at least a</span>
-<span class="c1">## 50% win rate causing teams that play against these champions to be a greater disadvantage of winning. </span>
-</pre></div>
-
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>As we can see from the data, the second most banned champion has a 60% win rate when picked. We can see from these two data points, that there may be correlation between the most banned champions and win rate. We can see that often times, those most banned have more than a 50% win rate causing teams that play against these champions to be a greater disadvantage of winning. </p>
 </div>
 </div>
 </div>
-
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[30]:</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Other questions we can ask...</span>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4>Other questions we can ask...</h4><p>There are many other questions we can ask and even complex ones are 
+surprisingly easy to do because of the way that we have structured our data.</p>
+<p>Here are a few:</p>
 
-<span class="c1">## There are tons of questions we can ask, and even complex ones are </span>
-<span class="c1">## surprisingly easy to do so given the way we&#39;ve structured our data, </span>
-<span class="c1">## Here&#39;s a smattering:</span>
-    <span class="c1">## 1: Is there any champion that seems to confer a systematic advantage</span>
-    <span class="c1">## to the team that has it? If it appears so, can we isolate the </span>
-    <span class="c1">## effect from other possible factors?</span>
-    
-    <span class="c1">## 2: Is there any combination of champion bans that make a team more </span>
-    <span class="c1">## likely to win? Does it depend heavily on the team?</span>
-    
-    <span class="c1">## 3: Which teams ban the same champions the most? Can we guess why </span>
-    <span class="c1">## from the data?</span>
-</pre></div>
+<pre><code>1: Is there any champion that seems to confer a systematic advantage
+   to the team that has it? If it appears so, can we isolate the 
+   effect from other possible factors?
+
+2: Is there any combination of champion bans that make a team more 
+   likely to win? Does it depend heavily on the team?
+
+3: Which teams ban the same champions the most? Can we guess why 
+   from the data?</code></pre>
 
 </div>
 </div>
-</div>
-
 </div>
     </div>
   </div>
