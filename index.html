@@ -11790,21 +11790,38 @@ div#notebook {
 </p>
 <h4>Gameplay</h4>
 <p>
-The premise of the game is simple: each game consists of two teams of 5 players, with one team labeled as red, and the other labeled as blue. Both team's primary objective is to destroy the opposing team's nexus, which are located at the opposite sides of the map. Within the game, there are other side objectives to accumulate gold or experience to have an edge over the enemy team. Some of these side objectives are Dragon, Baron Nashor, Turrets, and Inhibitors. There are more than the four noted, but the common ibjective that they all share is that they are a point of pressure to draw the enemy towards your team to start a teamfight.
+The premise of the game is simple: each game consists of two teams of 5 players, with one team labeled as red, and the other labeled as blue. Both team's primary objective is to destroy the opposing team's Nexus, which are located at the opposite sides of the map. Within the game, there are other side objectives to accumulate gold or experience to have an edge over the enemy team. Some of these side objectives are Dragon, Baron Nashor, Turrets, and Inhibitors. There are more than the four noted, but the common objective that they all share is that they are a point of pressure to draw the enemy towards your team to start a teamfight.
 </p>
 <h4>Bans</h4>
 <p>
 Banning champions is done before the game begins with each team given 5 bans to remove certain champions from the game. These champions may be excluded from the game because they percieved as OP (overpowered), unfair to play against, or to give an advantage for the match.
 Each team is given 5 bans for over 140 champions to pick, and after the ban phase, each player is required to pick one of the remaining ~130 champions that form some team compositons. 
-Full details can be found here (insert link to League of Legends page).
+    Full details can be found here (<a href="https://na.leagueoflegends.com/en/">https://na.leagueoflegends.com/en/</a>).
 </p>
 <h4>Oracle's Elixer</h4>
 <p>
-A platform called Oracle's Elixir created by Tim "Magic" Sevenhuysen has collected multiple seasons worth of data for each professional match that has occurred within the past couple years. Along with this data release (insert link to Oracle's Elixir page), he revealed that numerous coaches and analysts within the scene uses this data to gain a better idea at what the strengths and weaknesses are for each team and player. Given the interesting statistics they were able to find, the Oracle's Elixir decided to release the datasets as a way to allow members of the community to conduct anaylsis and start their esports career in some analyst or coaching positon.
+A platform called Oracle's Elixir created by Tim "Magic" Sevenhuysen has collected multiple seasons worth of data for each professional match that has occurred within the past couple years. Along with this data release (<a href="http://oracleselixir.com/match-data/">http://oracleselixir.com/match-data/</a>), he revealed that numerous coaches and analysts within the scene uses this data to gain a better idea at what the strengths and weaknesses are for each team and player. Given the interesting statistics they were able to find, the Oracle's Elixir decided to release the datasets as a way to allow members of the community to conduct anaylsis and start their esports career in some analyst or coaching positon.
 </p>
 <h4>Goals</h4>
 <p>
 In this tutorial, our goal is to tidy the in-game data given to us, provide valuable insight in determining if banning a champion matter in overall team's chances of winning. Although there are numerous of external factors that can't be quantify such as team compositon, type of day, comfort on the champion, and patch effect on champions, we can ignore these external factors. For readers unfamiliar with this game, we hope this analysis will make them interested in trying out League of Legends and provide some evidence on some go-to bans. For experienced players, we hope to show interesting unknown statistics and maybe even give new insights on reasoning behind bans.
+</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><h2>Part 1: Data Preparation and Getting Started</h2></p>
+<p>
+We will make use of Python 3 along with a few imported libraries: pandas, numpy, matplotlib, scikit-learn, seaborn, and more.
+    <br/>
+pandas - <a href="https://pandas.pydata.org/pandas-docs/stable/">https://pandas.pydata.org/pandas-docs/stable/</a>
+    <br/>
+matplotlib - <a href="https://matplotlib.org/contents.html">https://matplotlib.org/contents.html</a>
+    <br/>
+seaborn - <a href="https://seaborn.pydata.org/">https://seaborn.pydata.org/</a>
 </p>
 </div>
 </div>
@@ -11814,29 +11831,13 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
 <div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Part 1: Data Preparation and Getting Started</span>
-
-<span class="c1">## We will make use of Python 3 along with a few imported libraries: pandas,</span>
-<span class="c1">## numpy, matplotlib, scikit-learn, seaborn, and more. &lt;insert link for </span>
-<span class="c1">## the libraries&gt; </span>
-
-<span class="c1"># Necessary libraries and imports to complete this tutorial</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Necessary libraries and imports to complete this tutorial</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="k">import</span> <span class="n">f</span>
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-<span class="kn">from</span> <span class="nn">sklearn</span> <span class="k">import</span> <span class="n">model_selection</span>
-<span class="kn">from</span> <span class="nn">sklearn</span> <span class="k">import</span> <span class="n">linear_model</span>
-<span class="kn">from</span> <span class="nn">sklearn</span> <span class="k">import</span> <span class="n">preprocessing</span>
-<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="k">import</span> <span class="n">LabelEncoder</span>
-<span class="kn">import</span> <span class="nn">statsmodels.formula.api</span> <span class="k">as</span> <span class="nn">smf</span>
 <span class="kn">import</span> <span class="nn">warnings</span>
 <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
-
-<span class="c1">## The dataset we will be using can be found at the bottom of the data </span>
-<span class="c1">## release &lt;insert link to Oracle&#39;s Elixir page&gt; mentioned earlier. The</span>
-<span class="c1">## dataset comes in the form of a CSV (Comma Separated Value) file.</span>
 </pre></div>
 
 </div>
@@ -11844,20 +11845,25 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>
+The dataset we will be using can be found at the bottom of the data release (<a href="http://oracleselixir.com/match-data/">http://oracleselixir.com/match-data/</a>) mentioned earlier. The dataset comes in the form of a CSV (Comma Separated Value) file.
+</p><p><h2>Part 1.1: Preprocssing the Data</h2></p>
+<p>
+Before running the code to read the League of Legends file, we have to preprocess the data using Excel and any text editor. The League of Legends data was huge, so to have a more manageably sized data frame we grabbed approximately major regions (NALCS (North America), EULCS (Europe), LPL (China), LCK (South Korea). Additionally, we have already stripped the dataset to only include the major regions.
+</p>
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[24]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Part 1.1: Preprocssing the Data</span>
-
-<span class="c1">## Before running the code to read the League of Legends file, we have to</span>
-<span class="c1">## preprocess the data using Excel and any text editor. The League of </span>
-<span class="c1">## Legends data was huge, so to have a more manageably sized data frame we</span>
-<span class="c1">## grabbed approximately major regions (NALCS (North America), EULCS (Europe), LPL (China), LCK (South Korea). </span>
-<span class="c1">## Additionally, I have already strip the dataset to only have the major regions</span>
-
-<span class="n">league</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;LoL.csv&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">league</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;LoL.csv&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
 <span class="n">league</span> <span class="o">=</span> <span class="n">league</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
 <span class="n">league</span>
 </pre></div>
@@ -11872,7 +11878,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[24]:</div>
+<div class="prompt output_prompt">Out[4]:</div>
 
 
 
@@ -13085,29 +13091,37 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>
+    <b>In the above League of Legends dataset, there are 15 columns. We have:</b>
+    <br/>
+League (NALCS, EULCS, LPL, LCK)<br/>
+Split (Regular Season (2018-2) or Playoffs)<br/>
+Date<br/>
+Week (what week the game was played)<br/>
+Side to the Game<br/>
+Game Number (each team plays the other teams twice per split)<br/>
+Team <br/>
+Position (What Champion got picked and where it went)<br/>
+Champion (What Champion was picked)<br/>
+Ban[1-5] (Ban Number and what got banned)<br/>
+Result (Whether or not this team won the game. 1 is Win and 0 is Loss)<br/>
+</p>
+<p>
+The titles of each column should be self-explanatory. If you'd like to learn more about a column in the context of the game, important topics have links to the addition information here (<a href="http://oracleselixir.com/match-data/match-data-dictionary/">http://oracleselixir.com/match-data/match-data-dictionary/</a>).
+</p>
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[25]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## In the above League of Legends dataset, there are 15 columns. We have:</span>
-    <span class="c1">## League (NALCS, EULCS, LPL, LCK)</span>
-    <span class="c1">## Split (Regular Season (2018-2) or Playoffs)</span>
-    <span class="c1">## Date</span>
-    <span class="c1">## Week (what week the game was played)</span>
-    <span class="c1">## Side to the Game</span>
-    <span class="c1">## Game Number (each team plays the other teams twice per split)</span>
-    <span class="c1">## Team </span>
-    <span class="c1">## Position (What Champion got picked and where it went)</span>
-    <span class="c1">## Champion (What Champion was picked)</span>
-    <span class="c1">## Ban[1-5] (Ban Number and what got banned)</span>
-    <span class="c1">## Result</span>
-<span class="c1">## The titles of each column should be self-explanatory. If you&#39;d like to </span>
-<span class="c1">## learn more about a column in the context of the game, important topics</span>
-<span class="c1">## have links to the addition information here &lt;insert Oracle&#39;s Elixir Data</span>
-<span class="c1">## Dictionary here&gt;.</span>
-
-<span class="n">league</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">league</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 
 </div>
@@ -13120,7 +13134,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[25]:</div>
+<div class="prompt output_prompt">Out[5]:</div>
 
 
 
@@ -13268,19 +13282,22 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>Part 2: Exploratory Data Analysis</h2><p>
+    For this section, there's not enough distinct, default colors for the graphs we will use. Thankfully, seaborn allows us to create a new palette of colors to use for graphing. Below is a set of distinct colors, and of course you can change whatever colors you like.
+</p>
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[27]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Part 2: Exploratory Data Analysis </span>
-
-<span class="c1">## For this section, there&#39;s not enough distinct, default colors for the</span>
-<span class="c1">## graphs we will use.  Thankfully, seaborn allows us to create a new </span>
-<span class="c1">## palette of colors to use for graphing. Below is a set of distinct </span>
-<span class="c1">## colors, and of course you can change whatever colors you like.</span>
-
-<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;purple&quot;</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="s2">&quot;pink&quot;</span><span class="p">,</span> <span class="s2">&quot;brown&quot;</span><span class="p">,</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;teal&quot;</span><span class="p">,</span> <span class="s2">&quot;orange&quot;</span><span class="p">,</span> <span class="s2">&quot;yellow&quot;</span><span class="p">,</span> <span class="s2">&quot;grey&quot;</span><span class="p">,</span> \
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;purple&quot;</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="s2">&quot;pink&quot;</span><span class="p">,</span> <span class="s2">&quot;brown&quot;</span><span class="p">,</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;teal&quot;</span><span class="p">,</span> <span class="s2">&quot;orange&quot;</span><span class="p">,</span> <span class="s2">&quot;yellow&quot;</span><span class="p">,</span> <span class="s2">&quot;grey&quot;</span><span class="p">,</span> \
           <span class="s2">&quot;cyan&quot;</span><span class="p">,</span> <span class="s2">&quot;bright green&quot;</span><span class="p">,</span> <span class="s2">&quot;hot pink&quot;</span><span class="p">,</span> <span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="s2">&quot;maroon&quot;</span><span class="p">,</span> <span class="s2">&quot;tan&quot;</span><span class="p">,</span> <span class="s2">&quot;lavender&quot;</span><span class="p">,</span> <span class="s2">&quot;goldenrod&quot;</span><span class="p">,</span> <span class="s2">&quot;sky blue&quot;</span><span class="p">,</span> <span class="s2">&quot;olive&quot;</span><span class="p">]</span>
 <span class="n">new_palette</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">xkcd_palette</span><span class="p">(</span><span class="n">colors</span><span class="p">)</span>
 </pre></div>
@@ -13290,21 +13307,27 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><h4>If Zoe is banned, is her team more or less likely to win (or neither)?</h4></p>
+<p><p>
+    For starters, we'll ask a simple question. If the champion Zoe is banned, does this make her team more likely to win? Does it make a difference? First, we need to extract matches in which Zoe is banned. Let's keep blue and red bans separate for now, since this might make answering the question easier later.
+    </p>
+<b>
+First, we'll get the matches when the blue team banned Zoe
+    </b></p>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[28]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## If Zoe is banned, is her team more or less likely to win (or neither)?</span>
-
-<span class="c1">## For starters, we&#39;ll ask a simple question. If the champion Zoe is </span>
-<span class="c1">## banned, does this make her team more likely to win? Does it make a</span>
-<span class="c1">## difference? First, we need to extract matches in which Zoe is banned.</span>
-<span class="c1">## Let&#39;s keep blue and red bans separate for now, since this might make </span>
-<span class="c1">## answering the question easier later.</span>
-
-<span class="c1">## First, we&#39;ll get the matches which the blue team banned Zoe</span>
-<span class="n">blueban</span> <span class="o">=</span>  <span class="n">league</span><span class="p">[(</span><span class="n">league</span><span class="o">.</span><span class="n">side</span> <span class="o">==</span> <span class="s2">&quot;Blue&quot;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">league</span><span class="o">.</span><span class="n">position</span> <span class="o">==</span> <span class="s2">&quot;Team&quot;</span><span class="p">)]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">blueban</span> <span class="o">=</span>  <span class="n">league</span><span class="p">[(</span><span class="n">league</span><span class="o">.</span><span class="n">side</span> <span class="o">==</span> <span class="s2">&quot;Blue&quot;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">league</span><span class="o">.</span><span class="n">position</span> <span class="o">==</span> <span class="s2">&quot;Team&quot;</span><span class="p">)]</span>
 <span class="n">bluezoeban</span> <span class="o">=</span> <span class="n">blueban</span><span class="p">[((</span><span class="n">league</span><span class="o">.</span><span class="n">ban1</span> <span class="o">==</span> <span class="s2">&quot;Zoe&quot;</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">league</span><span class="o">.</span><span class="n">ban2</span> <span class="o">==</span> <span class="s2">&quot;Zoe&quot;</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">league</span><span class="o">.</span><span class="n">ban3</span> <span class="o">==</span> <span class="s2">&quot;Zoe&quot;</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">league</span><span class="o">.</span><span class="n">ban4</span> <span class="o">==</span> <span class="s2">&quot;Zoe&quot;</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">league</span><span class="o">.</span><span class="n">ban5</span> <span class="o">==</span> <span class="s2">&quot;Zoe&quot;</span><span class="p">))]</span>
 <span class="n">bluezoeban</span>
 </pre></div>
@@ -13319,7 +13342,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[28]:</div>
+<div class="prompt output_prompt">Out[7]:</div>
 
 
 
@@ -13343,6 +13366,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr style="text-align: right;">
       <th></th>
       <th>league</th>
+      <th>split</th>
       <th>date</th>
       <th>week</th>
       <th>game</th>
@@ -13363,6 +13387,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>94</th>
       <td>LCK</td>
+      <td>2018-2</td>
       <td>43264.03627</td>
       <td>1.2</td>
       <td>2</td>
@@ -13381,6 +13406,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>130</th>
       <td>LCK</td>
+      <td>2018-2</td>
       <td>43264.15736</td>
       <td>1.2</td>
       <td>2</td>
@@ -13399,6 +13425,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>154</th>
       <td>LCK</td>
+      <td>2018-2</td>
       <td>43264.28487</td>
       <td>1.2</td>
       <td>2</td>
@@ -13417,6 +13444,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>262</th>
       <td>EULCS</td>
+      <td>2018-2</td>
       <td>43266.60719</td>
       <td>1</td>
       <td>1</td>
@@ -13435,6 +13463,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>298</th>
       <td>LCK</td>
+      <td>2018-2</td>
       <td>43266.20351</td>
       <td>1.4</td>
       <td>3</td>
@@ -13453,6 +13482,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>322</th>
       <td>LCK</td>
+      <td>2018-2</td>
       <td>43266.31083</td>
       <td>1.4</td>
       <td>2</td>
@@ -13471,6 +13501,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>370</th>
       <td>EULCS</td>
+      <td>2018-2</td>
       <td>43267.51301</td>
       <td>1</td>
       <td>2</td>
@@ -13489,6 +13520,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>394</th>
       <td>NALCS</td>
+      <td>2018-2</td>
       <td>43267.65397</td>
       <td>1</td>
       <td>1</td>
@@ -13507,6 +13539,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>562</th>
       <td>NALCS</td>
+      <td>2018-2</td>
       <td>43268.60641</td>
       <td>1</td>
       <td>2</td>
@@ -13525,6 +13558,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>610</th>
       <td>LCK</td>
+      <td>2018-2</td>
       <td>43268.27922</td>
       <td>1.6</td>
       <td>2</td>
@@ -13543,6 +13577,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>622</th>
       <td>NALCS</td>
+      <td>2018-2</td>
       <td>43267.78785</td>
       <td>1</td>
       <td>1</td>
@@ -13561,6 +13596,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>634</th>
       <td>LCK</td>
+      <td>2018-2</td>
       <td>43270.09763</td>
       <td>2.1</td>
       <td>1</td>
@@ -13579,6 +13615,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>658</th>
       <td>LCK</td>
+      <td>2018-2</td>
       <td>43270.23981</td>
       <td>2.1</td>
       <td>1</td>
@@ -13597,6 +13634,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>706</th>
       <td>LCK</td>
+      <td>2018-2</td>
       <td>43271.07306</td>
       <td>2.2</td>
       <td>1</td>
@@ -13615,6 +13653,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>742</th>
       <td>LCK</td>
+      <td>2018-2</td>
       <td>43271.22718</td>
       <td>2.2</td>
       <td>1</td>
@@ -13633,6 +13672,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>850</th>
       <td>LCK</td>
+      <td>2018-2</td>
       <td>43273.1591</td>
       <td>2.4</td>
       <td>2</td>
@@ -13651,6 +13691,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>886</th>
       <td>EULCS</td>
+      <td>2018-2</td>
       <td>43273.43795</td>
       <td>2</td>
       <td>1</td>
@@ -13669,6 +13710,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>898</th>
       <td>EULCS</td>
+      <td>2018-2</td>
       <td>43273.4834</td>
       <td>2</td>
       <td>1</td>
@@ -13687,6 +13729,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>922</th>
       <td>EULCS</td>
+      <td>2018-2</td>
       <td>43273.56743</td>
       <td>2</td>
       <td>1</td>
@@ -13705,6 +13748,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>946</th>
       <td>EULCS</td>
+      <td>2018-2</td>
       <td>43274.39535</td>
       <td>2</td>
       <td>2</td>
@@ -13723,6 +13767,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>982</th>
       <td>EULCS</td>
+      <td>2018-2</td>
       <td>43274.55985</td>
       <td>2</td>
       <td>2</td>
@@ -13741,6 +13786,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>1138</th>
       <td>EULCS</td>
+      <td>2018-2</td>
       <td>43323.44255</td>
       <td>8</td>
       <td>2</td>
@@ -13759,6 +13805,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>1150</th>
       <td>NALCS</td>
+      <td>2018-2</td>
       <td>43275.66067</td>
       <td>2</td>
       <td>2</td>
@@ -13777,6 +13824,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>1174</th>
       <td>NALCS</td>
+      <td>2018-2</td>
       <td>43275.74299</td>
       <td>2</td>
       <td>2</td>
@@ -13795,6 +13843,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>1186</th>
       <td>LCK</td>
+      <td>2018-2</td>
       <td>43275.0822</td>
       <td>2.6</td>
       <td>1</td>
@@ -13813,6 +13862,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>1210</th>
       <td>LCK</td>
+      <td>2018-2</td>
       <td>43275.2176</td>
       <td>2.6</td>
       <td>1</td>
@@ -13831,6 +13881,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>1234</th>
       <td>LCK</td>
+      <td>2018-2</td>
       <td>43277.09479</td>
       <td>3.1</td>
       <td>1</td>
@@ -13849,6 +13900,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>1306</th>
       <td>LCK</td>
+      <td>2018-2</td>
       <td>43278.02581</td>
       <td>3.2</td>
       <td>2</td>
@@ -13867,6 +13919,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>1390</th>
       <td>LCK</td>
+      <td>2018-2</td>
       <td>43279.09448</td>
       <td>3.3</td>
       <td>1</td>
@@ -13885,6 +13938,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>1426</th>
       <td>LCK</td>
+      <td>2018-2</td>
       <td>43279.27824</td>
       <td>3.3</td>
       <td>2</td>
@@ -13917,10 +13971,12 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
       <td>...</td>
       <td>...</td>
       <td>...</td>
+      <td>...</td>
     </tr>
     <tr>
       <th>3586</th>
       <td>LCK</td>
+      <td>2018-2</td>
       <td>43310.20656</td>
       <td>6.6</td>
       <td>3</td>
@@ -13939,6 +13995,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>3598</th>
       <td>LCK</td>
+      <td>2018-2</td>
       <td>43310.26206</td>
       <td>6.6</td>
       <td>1</td>
@@ -13957,6 +14014,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>3658</th>
       <td>LCK</td>
+      <td>2018-2</td>
       <td>43312.27455</td>
       <td>7.1</td>
       <td>1</td>
@@ -13975,6 +14033,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>3694</th>
       <td>LCK</td>
+      <td>2018-2</td>
       <td>43313.11161</td>
       <td>7.2</td>
       <td>1</td>
@@ -13993,6 +14052,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>3718</th>
       <td>LCK</td>
+      <td>2018-2</td>
       <td>43313.20065</td>
       <td>7.2</td>
       <td>1</td>
@@ -14011,6 +14071,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>3766</th>
       <td>LCK</td>
+      <td>2018-2</td>
       <td>43314.15736</td>
       <td>7.3</td>
       <td>2</td>
@@ -14029,6 +14090,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>3790</th>
       <td>LCK</td>
+      <td>2018-2</td>
       <td>43314.28289</td>
       <td>7.3</td>
       <td>2</td>
@@ -14047,6 +14109,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>3814</th>
       <td>EULCS</td>
+      <td>2018-2</td>
       <td>43315.43477</td>
       <td>7</td>
       <td>1</td>
@@ -14065,6 +14128,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>3850</th>
       <td>EULCS</td>
+      <td>2018-2</td>
       <td>43315.58616</td>
       <td>7</td>
       <td>1</td>
@@ -14083,6 +14147,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>3886</th>
       <td>EULCS</td>
+      <td>2018-2</td>
       <td>43316.45236</td>
       <td>7</td>
       <td>2</td>
@@ -14101,6 +14166,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>3898</th>
       <td>EULCS</td>
+      <td>2018-2</td>
       <td>43316.49394</td>
       <td>7</td>
       <td>2</td>
@@ -14119,6 +14185,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>4006</th>
       <td>LCK</td>
+      <td>2018-2</td>
       <td>43317.16179</td>
       <td>7.5</td>
       <td>2</td>
@@ -14137,6 +14204,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>4066</th>
       <td>NALCS</td>
+      <td>2018-2</td>
       <td>43316.70234</td>
       <td>7</td>
       <td>1</td>
@@ -14155,6 +14223,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>4078</th>
       <td>NALCS</td>
+      <td>2018-2</td>
       <td>43316.74786</td>
       <td>7</td>
       <td>1</td>
@@ -14173,6 +14242,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>4090</th>
       <td>NALCS</td>
+      <td>2018-2</td>
       <td>43316.79241</td>
       <td>7</td>
       <td>1</td>
@@ -14191,6 +14261,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>4210</th>
       <td>LCK</td>
+      <td>2018-2</td>
       <td>43319.28206</td>
       <td>8.1</td>
       <td>2</td>
@@ -14209,6 +14280,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>4258</th>
       <td>LCK</td>
+      <td>2018-2</td>
       <td>43320.28212</td>
       <td>8.2</td>
       <td>2</td>
@@ -14227,6 +14299,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>4294</th>
       <td>EULCS</td>
+      <td>2018-2</td>
       <td>43322.44446</td>
       <td>8</td>
       <td>1</td>
@@ -14245,6 +14318,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>4438</th>
       <td>NALCS</td>
+      <td>2018-2</td>
       <td>43323.69113</td>
       <td>8</td>
       <td>1</td>
@@ -14263,6 +14337,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>4450</th>
       <td>NALCS</td>
+      <td>2018-2</td>
       <td>43323.72821</td>
       <td>8</td>
       <td>1</td>
@@ -14281,6 +14356,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>4474</th>
       <td>NALCS</td>
+      <td>2018-2</td>
       <td>43323.81501</td>
       <td>8</td>
       <td>1</td>
@@ -14299,6 +14375,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>4522</th>
       <td>NALCS</td>
+      <td>2018-2</td>
       <td>43324.71074</td>
       <td>8</td>
       <td>2</td>
@@ -14317,6 +14394,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>4630</th>
       <td>LCK</td>
+      <td>2018-2p</td>
       <td>43330.25564</td>
       <td>R2</td>
       <td>4</td>
@@ -14335,6 +14413,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>4714</th>
       <td>EULCS</td>
+      <td>2018-2</td>
       <td>43330.39476</td>
       <td>9</td>
       <td>2</td>
@@ -14353,6 +14432,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>4810</th>
       <td>NALCS</td>
+      <td>2018-2</td>
       <td>43330.66247</td>
       <td>9</td>
       <td>1</td>
@@ -14371,6 +14451,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>4846</th>
       <td>NALCS</td>
+      <td>2018-2</td>
       <td>43330.78564</td>
       <td>9</td>
       <td>1</td>
@@ -14389,6 +14470,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>4894</th>
       <td>NALCS</td>
+      <td>2018-2</td>
       <td>43331.65809</td>
       <td>9</td>
       <td>2</td>
@@ -14407,6 +14489,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>4954</th>
       <td>NALCS</td>
+      <td>2018-2</td>
       <td>43332.78333</td>
       <td>T</td>
       <td>T</td>
@@ -14425,6 +14508,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>5230</th>
       <td>LCK</td>
+      <td>2018-2</td>
       <td>43321.27792</td>
       <td>8.3</td>
       <td>2</td>
@@ -14443,6 +14527,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>5494</th>
       <td>LCK</td>
+      <td>2018-2p</td>
       <td>43351.3422</td>
       <td>F</td>
       <td>5</td>
@@ -14460,7 +14545,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     </tr>
   </tbody>
 </table>
-<p>103 rows × 15 columns</p>
+<p>103 rows × 16 columns</p>
 </div>
 </div>
 
@@ -14472,7 +14557,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[29]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Zoe was banned &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">bluezoeban</span><span class="p">))</span> <span class="o">+</span>  <span class="s2">&quot; times out of &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">blueban</span><span class="p">))</span> <span class="o">+</span> <span class="s2">&quot; Blue side games (&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">bluezoeban</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">blueban</span><span class="p">))</span> <span class="o">+</span> <span class="s2">&quot;%)&quot;</span><span class="p">)</span>
@@ -14501,13 +14586,21 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><b>And we'll do the same for the red team</b></p>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[30]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## And we&#39;ll do the same for the red team</span>
-<span class="n">redban</span> <span class="o">=</span>  <span class="n">league</span><span class="p">[(</span><span class="n">league</span><span class="o">.</span><span class="n">side</span> <span class="o">==</span> <span class="s2">&quot;Red&quot;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">league</span><span class="o">.</span><span class="n">position</span> <span class="o">==</span> <span class="s2">&quot;Team&quot;</span><span class="p">)]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">redban</span> <span class="o">=</span>  <span class="n">league</span><span class="p">[(</span><span class="n">league</span><span class="o">.</span><span class="n">side</span> <span class="o">==</span> <span class="s2">&quot;Red&quot;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">league</span><span class="o">.</span><span class="n">position</span> <span class="o">==</span> <span class="s2">&quot;Team&quot;</span><span class="p">)]</span>
 <span class="n">redzoeban</span> <span class="o">=</span> <span class="n">redban</span><span class="p">[((</span><span class="n">league</span><span class="o">.</span><span class="n">ban1</span> <span class="o">==</span> <span class="s2">&quot;Zoe&quot;</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">league</span><span class="o">.</span><span class="n">ban2</span> <span class="o">==</span> <span class="s2">&quot;Zoe&quot;</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">league</span><span class="o">.</span><span class="n">ban3</span> <span class="o">==</span> <span class="s2">&quot;Zoe&quot;</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">league</span><span class="o">.</span><span class="n">ban4</span> <span class="o">==</span> <span class="s2">&quot;Zoe&quot;</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">league</span><span class="o">.</span><span class="n">ban5</span> <span class="o">==</span> <span class="s2">&quot;Zoe&quot;</span><span class="p">))]</span>
 <span class="n">redzoeban</span>
 </pre></div>
@@ -14522,7 +14615,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[30]:</div>
+<div class="prompt output_prompt">Out[9]:</div>
 
 
 
@@ -14546,6 +14639,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr style="text-align: right;">
       <th></th>
       <th>league</th>
+      <th>split</th>
       <th>date</th>
       <th>week</th>
       <th>game</th>
@@ -14566,6 +14660,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>11</th>
       <td>EULCS</td>
+      <td>2018-2</td>
       <td>43274.49209</td>
       <td>2</td>
       <td>2</td>
@@ -14584,6 +14679,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>107</th>
       <td>LCK</td>
+      <td>2018-2</td>
       <td>43264.06755</td>
       <td>1.2</td>
       <td>3</td>
@@ -14602,6 +14698,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>119</th>
       <td>LCK</td>
+      <td>2018-2</td>
       <td>43264.1022</td>
       <td>1.2</td>
       <td>1</td>
@@ -14620,6 +14717,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>179</th>
       <td>LCK</td>
+      <td>2018-2</td>
       <td>43265.15869</td>
       <td>1.3</td>
       <td>2</td>
@@ -14638,6 +14736,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>239</th>
       <td>EULCS</td>
+      <td>2018-2</td>
       <td>43266.534</td>
       <td>1</td>
       <td>1</td>
@@ -14656,6 +14755,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>287</th>
       <td>LCK</td>
+      <td>2018-2</td>
       <td>43266.15917</td>
       <td>1.4</td>
       <td>2</td>
@@ -14674,6 +14774,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>335</th>
       <td>EULCS</td>
+      <td>2018-2</td>
       <td>43267.38645</td>
       <td>1</td>
       <td>2</td>
@@ -14692,6 +14793,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>347</th>
       <td>EULCS</td>
+      <td>2018-2</td>
       <td>43267.44332</td>
       <td>1</td>
       <td>2</td>
@@ -14710,6 +14812,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>359</th>
       <td>EULCS</td>
+      <td>2018-2</td>
       <td>43267.4766</td>
       <td>1</td>
       <td>2</td>
@@ -14728,6 +14831,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>383</th>
       <td>EULCS</td>
+      <td>2018-2</td>
       <td>43267.54966</td>
       <td>1</td>
       <td>2</td>
@@ -14746,6 +14850,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>407</th>
       <td>NALCS</td>
+      <td>2018-2</td>
       <td>43267.69407</td>
       <td>1</td>
       <td>1</td>
@@ -14764,6 +14869,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>431</th>
       <td>NALCS</td>
+      <td>2018-2</td>
       <td>43267.82233</td>
       <td>1</td>
       <td>1</td>
@@ -14782,6 +14888,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>491</th>
       <td>LCK</td>
+      <td>2018-2</td>
       <td>43267.30115</td>
       <td>1.5</td>
       <td>2</td>
@@ -14800,6 +14907,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>539</th>
       <td>LCK</td>
+      <td>2018-2</td>
       <td>43268.21119</td>
       <td>1.6</td>
       <td>1</td>
@@ -14818,6 +14926,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>551</th>
       <td>NALCS</td>
+      <td>2018-2</td>
       <td>43268.56992</td>
       <td>1</td>
       <td>2</td>
@@ -14836,6 +14945,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>575</th>
       <td>NALCS</td>
+      <td>2018-2</td>
       <td>43268.63696</td>
       <td>1</td>
       <td>2</td>
@@ -14854,6 +14964,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>587</th>
       <td>NALCS</td>
+      <td>2018-2</td>
       <td>43268.73743</td>
       <td>1</td>
       <td>2</td>
@@ -14872,6 +14983,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>599</th>
       <td>NALCS</td>
+      <td>2018-2</td>
       <td>43268.73743</td>
       <td>1</td>
       <td>2</td>
@@ -14890,6 +15002,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>671</th>
       <td>LCK</td>
+      <td>2018-2</td>
       <td>43270.28596</td>
       <td>2.1</td>
       <td>2</td>
@@ -14908,6 +15021,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>719</th>
       <td>LCK</td>
+      <td>2018-2</td>
       <td>43271.15326</td>
       <td>2.2</td>
       <td>2</td>
@@ -14926,6 +15040,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>767</th>
       <td>LCK</td>
+      <td>2018-2</td>
       <td>43271.31595</td>
       <td>2.2</td>
       <td>3</td>
@@ -14944,6 +15059,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>803</th>
       <td>LCK</td>
+      <td>2018-2</td>
       <td>43272.22463</td>
       <td>2.3</td>
       <td>3</td>
@@ -14962,6 +15078,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>827</th>
       <td>LCK</td>
+      <td>2018-2</td>
       <td>43272.32814</td>
       <td>2.3</td>
       <td>2</td>
@@ -14980,6 +15097,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>959</th>
       <td>EULCS</td>
+      <td>2018-2</td>
       <td>43274.4515</td>
       <td>2</td>
       <td>2</td>
@@ -14998,6 +15116,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>1007</th>
       <td>NALCS</td>
+      <td>2018-2</td>
       <td>43274.69171</td>
       <td>2</td>
       <td>1</td>
@@ -15016,6 +15135,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>1019</th>
       <td>LCK</td>
+      <td>2018-2</td>
       <td>43274.11053</td>
       <td>2.5</td>
       <td>1</td>
@@ -15034,6 +15154,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>1043</th>
       <td>LCK</td>
+      <td>2018-2</td>
       <td>43274.18953</td>
       <td>2.5</td>
       <td>1</td>
@@ -15052,6 +15173,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>1055</th>
       <td>LCK</td>
+      <td>2018-2</td>
       <td>43274.28005</td>
       <td>2.5</td>
       <td>2</td>
@@ -15070,6 +15192,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>1079</th>
       <td>NALCS</td>
+      <td>2018-2</td>
       <td>43274.74052</td>
       <td>2</td>
       <td>1</td>
@@ -15088,6 +15211,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>1091</th>
       <td>NALCS</td>
+      <td>2018-2</td>
       <td>43274.7863</td>
       <td>2</td>
       <td>1</td>
@@ -15120,10 +15244,12 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
       <td>...</td>
       <td>...</td>
       <td>...</td>
+      <td>...</td>
     </tr>
     <tr>
       <th>2951</th>
       <td>NALCS</td>
+      <td>2018-2</td>
       <td>43303.61329</td>
       <td>5</td>
       <td>2</td>
@@ -15142,6 +15268,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>2963</th>
       <td>NALCS</td>
+      <td>2018-2</td>
       <td>43303.65366</td>
       <td>5</td>
       <td>2</td>
@@ -15160,6 +15287,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>2987</th>
       <td>NALCS</td>
+      <td>2018-2</td>
       <td>43303.73215</td>
       <td>5</td>
       <td>2</td>
@@ -15178,6 +15306,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>2999</th>
       <td>LCK</td>
+      <td>2018-2</td>
       <td>43305.11942</td>
       <td>6.1</td>
       <td>1</td>
@@ -15196,6 +15325,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>3023</th>
       <td>LCK</td>
+      <td>2018-2</td>
       <td>43305.24076</td>
       <td>6.1</td>
       <td>1</td>
@@ -15214,6 +15344,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>3155</th>
       <td>LCK</td>
+      <td>2018-2</td>
       <td>43307.07825</td>
       <td>6.3</td>
       <td>1</td>
@@ -15232,6 +15363,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>3179</th>
       <td>LCK</td>
+      <td>2018-2</td>
       <td>43307.20105</td>
       <td>6.3</td>
       <td>3</td>
@@ -15250,6 +15382,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>3227</th>
       <td>LCK</td>
+      <td>2018-2</td>
       <td>43308.15492</td>
       <td>6.4</td>
       <td>2</td>
@@ -15268,6 +15401,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>3251</th>
       <td>LCK</td>
+      <td>2018-2</td>
       <td>43308.23038</td>
       <td>6.4</td>
       <td>1</td>
@@ -15286,6 +15420,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>3275</th>
       <td>LCK</td>
+      <td>2018-2</td>
       <td>43309.10162</td>
       <td>6.5</td>
       <td>1</td>
@@ -15304,6 +15439,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>3347</th>
       <td>EULCS</td>
+      <td>2018-2</td>
       <td>43308.51815</td>
       <td>6</td>
       <td>1</td>
@@ -15322,6 +15458,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>3371</th>
       <td>EULCS</td>
+      <td>2018-2</td>
       <td>43308.59968</td>
       <td>6</td>
       <td>1</td>
@@ -15340,6 +15477,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>3467</th>
       <td>NALCS</td>
+      <td>2018-2</td>
       <td>43309.74653</td>
       <td>6</td>
       <td>1</td>
@@ -15358,6 +15496,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>3491</th>
       <td>NALCS</td>
+      <td>2018-2</td>
       <td>43309.82816</td>
       <td>6</td>
       <td>1</td>
@@ -15376,6 +15515,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>3551</th>
       <td>NALCS</td>
+      <td>2018-2</td>
       <td>43310.73191</td>
       <td>6</td>
       <td>2</td>
@@ -15394,6 +15534,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>3995</th>
       <td>LCK</td>
+      <td>2018-2</td>
       <td>43317.09162</td>
       <td>7.5</td>
       <td>1</td>
@@ -15412,6 +15553,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>4031</th>
       <td>LCK</td>
+      <td>2018-2</td>
       <td>43317.25391</td>
       <td>7.5</td>
       <td>1</td>
@@ -15430,6 +15572,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>4199</th>
       <td>LCK</td>
+      <td>2018-2</td>
       <td>43319.20127</td>
       <td>8.1</td>
       <td>1</td>
@@ -15448,6 +15591,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>4235</th>
       <td>LCK</td>
+      <td>2018-2</td>
       <td>43320.15611</td>
       <td>8.2</td>
       <td>2</td>
@@ -15466,6 +15610,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>4499</th>
       <td>NALCS</td>
+      <td>2018-2</td>
       <td>43324.61416</td>
       <td>8</td>
       <td>2</td>
@@ -15484,6 +15629,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>4511</th>
       <td>NALCS</td>
+      <td>2018-2</td>
       <td>43324.65701</td>
       <td>8</td>
       <td>2</td>
@@ -15502,6 +15648,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>4535</th>
       <td>NALCS</td>
+      <td>2018-2</td>
       <td>43324.75757</td>
       <td>8</td>
       <td>2</td>
@@ -15520,6 +15667,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>4583</th>
       <td>LCK</td>
+      <td>2018-2p</td>
       <td>43327.23519</td>
       <td>R1</td>
       <td>4</td>
@@ -15538,6 +15686,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>5207</th>
       <td>NALCS</td>
+      <td>2018-2p</td>
       <td>43338.66744</td>
       <td>QF</td>
       <td>3</td>
@@ -15556,6 +15705,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>5723</th>
       <td>LCK</td>
+      <td>2018-2rq</td>
       <td>43355.19654</td>
       <td>R1</td>
       <td>3</td>
@@ -15574,6 +15724,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>5735</th>
       <td>LCK</td>
+      <td>2018-2rq</td>
       <td>43355.22543</td>
       <td>R1</td>
       <td>4</td>
@@ -15592,6 +15743,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>5771</th>
       <td>LCK</td>
+      <td>2018-2rq</td>
       <td>43357.16319</td>
       <td>R2</td>
       <td>2</td>
@@ -15610,6 +15762,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>5783</th>
       <td>LCK</td>
+      <td>2018-2rq</td>
       <td>43357.20029</td>
       <td>R2</td>
       <td>3</td>
@@ -15628,6 +15781,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>5795</th>
       <td>LCK</td>
+      <td>2018-2rq</td>
       <td>43357.2417</td>
       <td>R2</td>
       <td>4</td>
@@ -15646,6 +15800,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr>
       <th>16031</th>
       <td>LMS</td>
+      <td>2018-2rq</td>
       <td>43363.30163</td>
       <td>R1</td>
       <td>3</td>
@@ -15663,7 +15818,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     </tr>
   </tbody>
 </table>
-<p>94 rows × 15 columns</p>
+<p>94 rows × 16 columns</p>
 </div>
 </div>
 
@@ -15675,7 +15830,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[31]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Zoe was banned &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">redzoeban</span><span class="p">))</span> <span class="o">+</span>  <span class="s2">&quot; times out of &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">redban</span><span class="p">))</span> <span class="o">+</span> <span class="s2">&quot; Red side games (&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">redzoeban</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">redban</span><span class="p">))</span> <span class="o">+</span> <span class="s2">&quot;%)&quot;</span><span class="p">)</span>
@@ -15704,14 +15859,20 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4>Now we want all the matches where Zoe was banned by at least one team, then we could get it with:</h4>
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[32]:</div>
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Now we want all the matches where Zoe was banned by at least one team,</span>
-<span class="c1">## then we could get it with:</span>
-<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Zoe was banned &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">redzoeban</span><span class="p">)</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">bluezoeban</span><span class="p">))</span> <span class="o">+</span>  <span class="s2">&quot; times out of &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">redban</span><span class="p">))</span> <span class="o">+</span> <span class="s2">&quot; games (&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">redzoeban</span><span class="p">)</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">bluezoeban</span><span class="p">))</span><span class="o">*</span><span class="mi">100</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">redban</span><span class="p">))</span> <span class="o">+</span> <span class="s2">&quot;%)&quot;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Zoe was banned &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">redzoeban</span><span class="p">)</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">bluezoeban</span><span class="p">))</span> <span class="o">+</span>  <span class="s2">&quot; times out of &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">redban</span><span class="p">))</span> <span class="o">+</span> <span class="s2">&quot; games (&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">redzoeban</span><span class="p">)</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">bluezoeban</span><span class="p">))</span><span class="o">*</span><span class="mi">100</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">redban</span><span class="p">))</span> <span class="o">+</span> <span class="s2">&quot;%)&quot;</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -15737,13 +15898,20 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4>Now let's look at the overall ban rate compared to total games played. </h4>
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[162]:</div>
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Now let&#39;s look at the overall ban rate compared to total games played. </span>
-<span class="n">total_games</span> <span class="o">=</span> <span class="n">league</span><span class="p">[</span><span class="n">league</span><span class="o">.</span><span class="n">position</span> <span class="o">==</span> <span class="s1">&#39;Team&#39;</span><span class="p">]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">total_games</span> <span class="o">=</span> <span class="n">league</span><span class="p">[</span><span class="n">league</span><span class="o">.</span><span class="n">position</span> <span class="o">==</span> <span class="s1">&#39;Team&#39;</span><span class="p">]</span>
 <span class="n">num_games</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">total_games</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
 <span class="n">ban_rate</span> <span class="o">=</span>  <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">redzoeban</span><span class="p">)</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">bluezoeban</span><span class="p">))</span><span class="o">/</span><span class="n">num_games</span>
 <span class="nb">print</span> <span class="p">(</span><span class="n">ban_rate</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span>
@@ -15772,14 +15940,21 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><b>And if we wanted all the matches where Zoe was banned by both teams, we can do an intersection of the two </b></p>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[33]:</div>
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## And if we wanted all the matches where Zoe was banned by both teams,</span>
-<span class="c1">## we can do an intersection of the two</span>
-<span class="p">(</span><span class="n">redban</span> <span class="o">&amp;</span> <span class="n">blueban</span><span class="p">)</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="p">(</span><span class="n">redban</span> <span class="o">&amp;</span> <span class="n">blueban</span><span class="p">)</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
 </pre></div>
 
 </div>
@@ -15792,7 +15967,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[33]:</div>
+<div class="prompt output_prompt">Out[13]:</div>
 
 
 
@@ -15816,6 +15991,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
     <tr style="text-align: right;">
       <th></th>
       <th>league</th>
+      <th>split</th>
       <th>date</th>
       <th>week</th>
       <th>game</th>
@@ -15846,7 +16022,7 @@ In this tutorial, our goal is to tidy the in-game data given to us, provide valu
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[48]:</div>
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## The result should be to be expected because both teams cannot ever both</span>
@@ -15896,7 +16072,7 @@ and lost 53 out of 103 games (51.45631067961165%)
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[144]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Who is the most banned character? Does banning this character make </span>
@@ -15911,7 +16087,7 @@ and lost 53 out of 103 games (51.45631067961165%)
 <span class="c1">## before, for each building a dictionary giving banned champions as keys</span>
 <span class="c1">## and the number of matches they were banned in as values:</span>
 
-<span class="n">allbans</span> <span class="o">=</span> <span class="n">league</span><span class="p">[(</span><span class="n">league</span><span class="o">.</span><span class="n">position</span> <span class="o">==</span> <span class="s2">&quot;Team&quot;</span><span class="p">)][</span><span class="n">league</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">9</span><span class="p">:</span><span class="mi">14</span><span class="p">]]</span>
+<span class="n">allbans</span> <span class="o">=</span> <span class="n">league</span><span class="p">[(</span><span class="n">league</span><span class="o">.</span><span class="n">position</span> <span class="o">==</span> <span class="s2">&quot;Team&quot;</span><span class="p">)][</span><span class="n">league</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">9</span><span class="p">:</span><span class="mi">15</span><span class="p">]]</span>
 <span class="n">bans1</span> <span class="o">=</span> <span class="n">allbans</span><span class="p">[</span><span class="s1">&#39;ban1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
 <span class="n">bans2</span> <span class="o">=</span> <span class="n">allbans</span><span class="p">[</span><span class="s1">&#39;ban2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
 <span class="n">bans3</span> <span class="o">=</span> <span class="n">allbans</span><span class="p">[</span><span class="s1">&#39;ban3&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
@@ -15921,7 +16097,7 @@ and lost 53 out of 103 games (51.45631067961165%)
 <span class="n">bans</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">bansdf</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">bans</span><span class="p">)</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="s1">&#39;bancount&#39;</span><span class="p">})</span>
 <span class="n">bansdf</span> <span class="o">=</span> <span class="n">bansdf</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;bancount&#39;</span><span class="p">,</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">bansdf</span>
+<span class="n">bansdf</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 
 </div>
@@ -15934,7 +16110,7 @@ and lost 53 out of 103 games (51.45631067961165%)
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[144]:</div>
+<div class="prompt output_prompt">Out[9]:</div>
 
 
 
@@ -15981,233 +16157,8 @@ and lost 53 out of 103 games (51.45631067961165%)
       <th>Zoe</th>
       <td>197.0</td>
     </tr>
-    <tr>
-      <th>Morgana</th>
-      <td>164.0</td>
-    </tr>
-    <tr>
-      <th>Tahm Kench</th>
-      <td>154.0</td>
-    </tr>
-    <tr>
-      <th>Yasuo</th>
-      <td>142.0</td>
-    </tr>
-    <tr>
-      <th>Swain</th>
-      <td>131.0</td>
-    </tr>
-    <tr>
-      <th>Camille</th>
-      <td>131.0</td>
-    </tr>
-    <tr>
-      <th>Kindred</th>
-      <td>125.0</td>
-    </tr>
-    <tr>
-      <th>Varus</th>
-      <td>123.0</td>
-    </tr>
-    <tr>
-      <th>Trundle</th>
-      <td>122.0</td>
-    </tr>
-    <tr>
-      <th>Akali</th>
-      <td>114.0</td>
-    </tr>
-    <tr>
-      <th>Dr. Mundo</th>
-      <td>112.0</td>
-    </tr>
-    <tr>
-      <th>Shen</th>
-      <td>110.0</td>
-    </tr>
-    <tr>
-      <th>Ryze</th>
-      <td>108.0</td>
-    </tr>
-    <tr>
-      <th>Irelia</th>
-      <td>101.0</td>
-    </tr>
-    <tr>
-      <th>Alistar</th>
-      <td>97.0</td>
-    </tr>
-    <tr>
-      <th>LeBlanc</th>
-      <td>94.0</td>
-    </tr>
-    <tr>
-      <th>Gangplank</th>
-      <td>92.0</td>
-    </tr>
-    <tr>
-      <th>Braum</th>
-      <td>90.0</td>
-    </tr>
-    <tr>
-      <th>Darius</th>
-      <td>88.0</td>
-    </tr>
-    <tr>
-      <th>Ezreal</th>
-      <td>83.0</td>
-    </tr>
-    <tr>
-      <th>Olaf</th>
-      <td>81.0</td>
-    </tr>
-    <tr>
-      <th>Gragas</th>
-      <td>75.0</td>
-    </tr>
-    <tr>
-      <th>Sejuani</th>
-      <td>69.0</td>
-    </tr>
-    <tr>
-      <th>Galio</th>
-      <td>67.0</td>
-    </tr>
-    <tr>
-      <th>Vladimir</th>
-      <td>66.0</td>
-    </tr>
-    <tr>
-      <th>Gnar</th>
-      <td>65.0</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>Malphite</th>
-      <td>5.0</td>
-    </tr>
-    <tr>
-      <th>Jarvan IV</th>
-      <td>4.0</td>
-    </tr>
-    <tr>
-      <th>Miss Fortune</th>
-      <td>4.0</td>
-    </tr>
-    <tr>
-      <th>Evelynn</th>
-      <td>4.0</td>
-    </tr>
-    <tr>
-      <th>Lee Sin</th>
-      <td>4.0</td>
-    </tr>
-    <tr>
-      <th>Karma</th>
-      <td>4.0</td>
-    </tr>
-    <tr>
-      <th>Zed</th>
-      <td>3.0</td>
-    </tr>
-    <tr>
-      <th>Elise</th>
-      <td>3.0</td>
-    </tr>
-    <tr>
-      <th>Kog'Maw</th>
-      <td>3.0</td>
-    </tr>
-    <tr>
-      <th>Kayle</th>
-      <td>3.0</td>
-    </tr>
-    <tr>
-      <th>Janna</th>
-      <td>3.0</td>
-    </tr>
-    <tr>
-      <th>Sivir</th>
-      <td>2.0</td>
-    </tr>
-    <tr>
-      <th>Blitzcrank</th>
-      <td>2.0</td>
-    </tr>
-    <tr>
-      <th>Corki</th>
-      <td>2.0</td>
-    </tr>
-    <tr>
-      <th>Xerath</th>
-      <td>2.0</td>
-    </tr>
-    <tr>
-      <th>Hecarim</th>
-      <td>2.0</td>
-    </tr>
-    <tr>
-      <th>Vayne</th>
-      <td>2.0</td>
-    </tr>
-    <tr>
-      <th>Maokai</th>
-      <td>2.0</td>
-    </tr>
-    <tr>
-      <th>Nunu</th>
-      <td>2.0</td>
-    </tr>
-    <tr>
-      <th>Rengar</th>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>Twisted Fate</th>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>Ahri</th>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>Nami</th>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>Ekko</th>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>Yorick</th>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>Nasus</th>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>Nidalee</th>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>Cho'Gath</th>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>Caitlyn</th>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>Zyra</th>
-      <td>1.0</td>
-    </tr>
   </tbody>
 </table>
-<p>113 rows × 1 columns</p>
 </div>
 </div>
 
@@ -16219,7 +16170,7 @@ and lost 53 out of 103 games (51.45631067961165%)
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[138]:</div>
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## So we have our answer. The most banned champion across the major regions</span>
@@ -16242,13 +16193,13 @@ and lost 53 out of 103 games (51.45631067961165%)
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[138]:</div>
+<div class="prompt output_prompt">Out[18]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7ffa563ac278&gt;</pre>
+<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fbb4f37ddd8&gt;</pre>
 </div>
 
 </div>
@@ -16274,7 +16225,7 @@ and lost 53 out of 103 games (51.45631067961165%)
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[141]:</div>
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Does banning Aatrox make you more likely to win?</span>
@@ -16296,7 +16247,7 @@ and lost 53 out of 103 games (51.45631067961165%)
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[141]:</div>
+<div class="prompt output_prompt">Out[19]:</div>
 
 
 
@@ -16320,6 +16271,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr style="text-align: right;">
       <th></th>
       <th>league</th>
+      <th>split</th>
       <th>date</th>
       <th>week</th>
       <th>game</th>
@@ -16340,6 +16292,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>251</th>
       <td>EULCS</td>
+      <td>2018-2</td>
       <td>43266.57421</td>
       <td>1</td>
       <td>1</td>
@@ -16358,6 +16311,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>359</th>
       <td>EULCS</td>
+      <td>2018-2</td>
       <td>43267.4766</td>
       <td>1</td>
       <td>2</td>
@@ -16376,6 +16330,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>431</th>
       <td>NALCS</td>
+      <td>2018-2</td>
       <td>43267.82233</td>
       <td>1</td>
       <td>1</td>
@@ -16394,6 +16349,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>515</th>
       <td>LCK</td>
+      <td>2018-2</td>
       <td>43268.09726</td>
       <td>1.6</td>
       <td>1</td>
@@ -16412,6 +16368,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>587</th>
       <td>NALCS</td>
+      <td>2018-2</td>
       <td>43268.73743</td>
       <td>1</td>
       <td>2</td>
@@ -16430,6 +16387,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>599</th>
       <td>NALCS</td>
+      <td>2018-2</td>
       <td>43268.73743</td>
       <td>1</td>
       <td>2</td>
@@ -16448,6 +16406,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>623</th>
       <td>NALCS</td>
+      <td>2018-2</td>
       <td>43267.78785</td>
       <td>1</td>
       <td>1</td>
@@ -16466,6 +16425,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>659</th>
       <td>LCK</td>
+      <td>2018-2</td>
       <td>43270.23981</td>
       <td>2.1</td>
       <td>1</td>
@@ -16484,6 +16444,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>683</th>
       <td>LCK</td>
+      <td>2018-2</td>
       <td>43270.95951</td>
       <td>2.2</td>
       <td>1</td>
@@ -16502,6 +16463,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>839</th>
       <td>LCK</td>
+      <td>2018-2</td>
       <td>43273.08652</td>
       <td>2.4</td>
       <td>1</td>
@@ -16520,6 +16482,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>959</th>
       <td>EULCS</td>
+      <td>2018-2</td>
       <td>43274.4515</td>
       <td>2</td>
       <td>2</td>
@@ -16538,6 +16501,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>1115</th>
       <td>NALCS</td>
+      <td>2018-2</td>
       <td>43275.57369</td>
       <td>2</td>
       <td>2</td>
@@ -16556,6 +16520,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>1439</th>
       <td>LCK</td>
+      <td>2018-2</td>
       <td>43280.10262</td>
       <td>3.4</td>
       <td>1</td>
@@ -16574,6 +16539,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>1499</th>
       <td>EULCS</td>
+      <td>2018-2</td>
       <td>43280.48891</td>
       <td>3</td>
       <td>1</td>
@@ -16592,6 +16558,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>1559</th>
       <td>EULCS</td>
+      <td>2018-2</td>
       <td>43281.43785</td>
       <td>3</td>
       <td>2</td>
@@ -16610,6 +16577,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>1619</th>
       <td>NALCS</td>
+      <td>2018-2</td>
       <td>43281.70038</td>
       <td>3</td>
       <td>1</td>
@@ -16628,6 +16596,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>1691</th>
       <td>NALCS</td>
+      <td>2018-2</td>
       <td>43282.65618</td>
       <td>3</td>
       <td>2</td>
@@ -16646,6 +16615,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>1703</th>
       <td>NALCS</td>
+      <td>2018-2</td>
       <td>43282.69465</td>
       <td>3</td>
       <td>2</td>
@@ -16664,6 +16634,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>1715</th>
       <td>NALCS</td>
+      <td>2018-2</td>
       <td>43282.73686</td>
       <td>3</td>
       <td>2</td>
@@ -16682,6 +16653,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>1811</th>
       <td>LCK</td>
+      <td>2018-2</td>
       <td>43282.23799</td>
       <td>3.6</td>
       <td>1</td>
@@ -16700,6 +16672,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>1859</th>
       <td>LCK</td>
+      <td>2018-2</td>
       <td>43292.19938</td>
       <td>4.1</td>
       <td>1</td>
@@ -16718,6 +16691,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>1871</th>
       <td>LCK</td>
+      <td>2018-2</td>
       <td>43292.2772</td>
       <td>4.1</td>
       <td>2</td>
@@ -16736,6 +16710,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>1883</th>
       <td>LCK</td>
+      <td>2018-2</td>
       <td>43293.07422</td>
       <td>4.2</td>
       <td>1</td>
@@ -16754,6 +16729,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>1895</th>
       <td>LCK</td>
+      <td>2018-2</td>
       <td>43293.15352</td>
       <td>4.2</td>
       <td>2</td>
@@ -16772,6 +16748,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>1907</th>
       <td>LCK</td>
+      <td>2018-2</td>
       <td>43293.2181</td>
       <td>4.2</td>
       <td>1</td>
@@ -16790,6 +16767,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>1919</th>
       <td>LCK</td>
+      <td>2018-2</td>
       <td>43293.29485</td>
       <td>4.2</td>
       <td>2</td>
@@ -16808,6 +16786,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>1931</th>
       <td>LCK</td>
+      <td>2018-2</td>
       <td>43294.11376</td>
       <td>4.3</td>
       <td>1</td>
@@ -16826,6 +16805,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>1943</th>
       <td>LCK</td>
+      <td>2018-2</td>
       <td>43294.15858</td>
       <td>4.3</td>
       <td>2</td>
@@ -16844,6 +16824,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>1955</th>
       <td>LCK</td>
+      <td>2018-2</td>
       <td>43294.19771</td>
       <td>4.3</td>
       <td>3</td>
@@ -16862,6 +16843,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>1967</th>
       <td>LCK</td>
+      <td>2018-2</td>
       <td>43294.26237</td>
       <td>4.3</td>
       <td>1</td>
@@ -16894,10 +16876,12 @@ and lost 53 out of 103 games (51.45631067961165%)
       <td>...</td>
       <td>...</td>
       <td>...</td>
+      <td>...</td>
     </tr>
     <tr>
       <th>4943</th>
       <td>NALCS</td>
+      <td>2018-2</td>
       <td>43332.73719</td>
       <td>T</td>
       <td>T</td>
@@ -16916,6 +16900,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>4955</th>
       <td>NALCS</td>
+      <td>2018-2</td>
       <td>43332.78333</td>
       <td>T</td>
       <td>T</td>
@@ -16934,6 +16919,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>4967</th>
       <td>NALCS</td>
+      <td>2018-2</td>
       <td>43332.82131</td>
       <td>T</td>
       <td>T</td>
@@ -16952,6 +16938,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>4979</th>
       <td>EULCS</td>
+      <td>2018-2rq</td>
       <td>43357.53883</td>
       <td>R1</td>
       <td>3</td>
@@ -16970,6 +16957,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>5075</th>
       <td>EULCS</td>
+      <td>2018-2p</td>
       <td>43337.44623</td>
       <td>QF</td>
       <td>2</td>
@@ -16988,6 +16976,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>5147</th>
       <td>EULCS</td>
+      <td>2018-2rq</td>
       <td>43359.5239</td>
       <td>R3</td>
       <td>4</td>
@@ -17006,6 +16995,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>5219</th>
       <td>LCK</td>
+      <td>2018-2</td>
       <td>43321.20259</td>
       <td>8.3</td>
       <td>1</td>
@@ -17024,6 +17014,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>5231</th>
       <td>LCK</td>
+      <td>2018-2</td>
       <td>43321.27792</td>
       <td>8.3</td>
       <td>2</td>
@@ -17042,6 +17033,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>5459</th>
       <td>LCK</td>
+      <td>2018-2p</td>
       <td>43351.18032</td>
       <td>F</td>
       <td>2</td>
@@ -17060,6 +17052,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>5471</th>
       <td>LCK</td>
+      <td>2018-2p</td>
       <td>43351.22718</td>
       <td>F</td>
       <td>3</td>
@@ -17078,6 +17071,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>5483</th>
       <td>LCK</td>
+      <td>2018-2p</td>
       <td>43351.27497</td>
       <td>F</td>
       <td>4</td>
@@ -17096,6 +17090,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>5699</th>
       <td>LCK</td>
+      <td>2018-2rq</td>
       <td>43355.10764</td>
       <td>R1</td>
       <td>1</td>
@@ -17114,6 +17109,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>5711</th>
       <td>LCK</td>
+      <td>2018-2rq</td>
       <td>43355.15729</td>
       <td>R1</td>
       <td>2</td>
@@ -17132,6 +17128,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>5723</th>
       <td>LCK</td>
+      <td>2018-2rq</td>
       <td>43355.19654</td>
       <td>R1</td>
       <td>3</td>
@@ -17150,6 +17147,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>5735</th>
       <td>LCK</td>
+      <td>2018-2rq</td>
       <td>43355.22543</td>
       <td>R1</td>
       <td>4</td>
@@ -17168,6 +17166,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>5747</th>
       <td>LCK</td>
+      <td>2018-2rq</td>
       <td>43355.30716</td>
       <td>R1</td>
       <td>5</td>
@@ -17186,6 +17185,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>5807</th>
       <td>LCK</td>
+      <td>2018-2rq</td>
       <td>43357.27334</td>
       <td>R2</td>
       <td>5</td>
@@ -17204,6 +17204,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>5831</th>
       <td>EULCS</td>
+      <td>2018-2rq</td>
       <td>43357.49601</td>
       <td>R1</td>
       <td>2</td>
@@ -17222,6 +17223,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>5879</th>
       <td>EULCS</td>
+      <td>2018-2rq</td>
       <td>43358.48383</td>
       <td>R2</td>
       <td>3</td>
@@ -17240,6 +17242,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>5891</th>
       <td>EULCS</td>
+      <td>2018-2rq</td>
       <td>43358.52574</td>
       <td>R2</td>
       <td>4</td>
@@ -17258,6 +17261,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>5963</th>
       <td>NALCS</td>
+      <td>2018-2rq</td>
       <td>43358.76154</td>
       <td>R2</td>
       <td>3</td>
@@ -17276,6 +17280,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>5999</th>
       <td>LCK</td>
+      <td>2018-2rq</td>
       <td>43359.20038</td>
       <td>R3</td>
       <td>3</td>
@@ -17294,6 +17299,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>15923</th>
       <td>LPL</td>
+      <td>2018-2rq</td>
       <td></td>
       <td>R2</td>
       <td>3</td>
@@ -17312,6 +17318,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>15935</th>
       <td>LPL</td>
+      <td>2018-2rq</td>
       <td></td>
       <td>R2</td>
       <td>4</td>
@@ -17330,6 +17337,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>15947</th>
       <td>LPL</td>
+      <td>2018-2rq</td>
       <td></td>
       <td>R1</td>
       <td>1</td>
@@ -17348,6 +17356,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>16055</th>
       <td>LMS</td>
+      <td>2018-2rq</td>
       <td>43364.18434</td>
       <td>R2</td>
       <td>1</td>
@@ -17366,6 +17375,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>16067</th>
       <td>LMS</td>
+      <td>2018-2rq</td>
       <td>43364.23135</td>
       <td>R2</td>
       <td>2</td>
@@ -17384,6 +17394,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>16079</th>
       <td>LMS</td>
+      <td>2018-2rq</td>
       <td>43364.28314</td>
       <td>R2</td>
       <td>3</td>
@@ -17402,6 +17413,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>16103</th>
       <td>LMS</td>
+      <td>2018-2rq</td>
       <td>43364.35368</td>
       <td>R2</td>
       <td>5</td>
@@ -17420,6 +17432,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>16127</th>
       <td>LMS</td>
+      <td>2018-2rq</td>
       <td>43365.2349</td>
       <td>R3</td>
       <td>2</td>
@@ -17437,7 +17450,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     </tr>
   </tbody>
 </table>
-<p>283 rows × 15 columns</p>
+<p>283 rows × 16 columns</p>
 </div>
 </div>
 
@@ -17449,7 +17462,7 @@ and lost 53 out of 103 games (51.45631067961165%)
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[140]:</div>
+<div class="prompt input_prompt">In&nbsp;[20]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">blueban</span> <span class="o">=</span>  <span class="n">league</span><span class="p">[(</span><span class="n">league</span><span class="o">.</span><span class="n">side</span> <span class="o">==</span> <span class="s2">&quot;Blue&quot;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">league</span><span class="o">.</span><span class="n">position</span> <span class="o">==</span> <span class="s2">&quot;Team&quot;</span><span class="p">)]</span>
@@ -17467,7 +17480,7 @@ and lost 53 out of 103 games (51.45631067961165%)
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[140]:</div>
+<div class="prompt output_prompt">Out[20]:</div>
 
 
 
@@ -17491,6 +17504,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr style="text-align: right;">
       <th></th>
       <th>league</th>
+      <th>split</th>
       <th>date</th>
       <th>week</th>
       <th>game</th>
@@ -17511,6 +17525,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>226</th>
       <td>EULCS</td>
+      <td>2018-2</td>
       <td>43266.48133</td>
       <td>1</td>
       <td>1</td>
@@ -17529,6 +17544,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>334</th>
       <td>EULCS</td>
+      <td>2018-2</td>
       <td>43267.38645</td>
       <td>1</td>
       <td>2</td>
@@ -17547,6 +17563,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>550</th>
       <td>NALCS</td>
+      <td>2018-2</td>
       <td>43268.56992</td>
       <td>1</td>
       <td>2</td>
@@ -17565,6 +17582,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>670</th>
       <td>LCK</td>
+      <td>2018-2</td>
       <td>43270.28596</td>
       <td>2.1</td>
       <td>2</td>
@@ -17583,6 +17601,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>706</th>
       <td>LCK</td>
+      <td>2018-2</td>
       <td>43271.07306</td>
       <td>2.2</td>
       <td>1</td>
@@ -17601,6 +17620,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>730</th>
       <td>LCK</td>
+      <td>2018-2</td>
       <td>43271.19071</td>
       <td>2.2</td>
       <td>3</td>
@@ -17619,6 +17639,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>742</th>
       <td>LCK</td>
+      <td>2018-2</td>
       <td>43271.22718</td>
       <td>2.2</td>
       <td>1</td>
@@ -17637,6 +17658,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>790</th>
       <td>LCK</td>
+      <td>2018-2</td>
       <td>43272.2015</td>
       <td>2.3</td>
       <td>2</td>
@@ -17655,6 +17677,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>802</th>
       <td>LCK</td>
+      <td>2018-2</td>
       <td>43272.22463</td>
       <td>2.3</td>
       <td>3</td>
@@ -17673,6 +17696,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>898</th>
       <td>EULCS</td>
+      <td>2018-2</td>
       <td>43273.4834</td>
       <td>2</td>
       <td>1</td>
@@ -17691,6 +17715,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>910</th>
       <td>EULCS</td>
+      <td>2018-2</td>
       <td>43273.53319</td>
       <td>2</td>
       <td>1</td>
@@ -17709,6 +17734,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>922</th>
       <td>EULCS</td>
+      <td>2018-2</td>
       <td>43273.56743</td>
       <td>2</td>
       <td>1</td>
@@ -17727,6 +17753,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>934</th>
       <td>EULCS</td>
+      <td>2018-2</td>
       <td>43273.60344</td>
       <td>2</td>
       <td>1</td>
@@ -17745,6 +17772,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>946</th>
       <td>EULCS</td>
+      <td>2018-2</td>
       <td>43274.39535</td>
       <td>2</td>
       <td>2</td>
@@ -17763,6 +17791,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>982</th>
       <td>EULCS</td>
+      <td>2018-2</td>
       <td>43274.55985</td>
       <td>2</td>
       <td>2</td>
@@ -17781,6 +17810,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>994</th>
       <td>NALCS</td>
+      <td>2018-2</td>
       <td>43274.64623</td>
       <td>2</td>
       <td>1</td>
@@ -17799,6 +17829,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>1102</th>
       <td>NALCS</td>
+      <td>2018-2</td>
       <td>43274.82162</td>
       <td>2</td>
       <td>1</td>
@@ -17817,6 +17848,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>1174</th>
       <td>NALCS</td>
+      <td>2018-2</td>
       <td>43275.74299</td>
       <td>2</td>
       <td>2</td>
@@ -17835,6 +17867,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>1294</th>
       <td>LCK</td>
+      <td>2018-2</td>
       <td>43277.96749</td>
       <td>3.2</td>
       <td>1</td>
@@ -17853,6 +17886,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>1318</th>
       <td>LCK</td>
+      <td>2018-2</td>
       <td>43278.06317</td>
       <td>3.2</td>
       <td>1</td>
@@ -17871,6 +17905,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>1342</th>
       <td>LCK</td>
+      <td>2018-2</td>
       <td>43278.1958</td>
       <td>3.2</td>
       <td>3</td>
@@ -17889,6 +17924,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>1414</th>
       <td>LCK</td>
+      <td>2018-2</td>
       <td>43279.19536</td>
       <td>3.3</td>
       <td>1</td>
@@ -17907,6 +17943,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>1426</th>
       <td>LCK</td>
+      <td>2018-2</td>
       <td>43279.27824</td>
       <td>3.3</td>
       <td>2</td>
@@ -17925,6 +17962,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>1450</th>
       <td>LCK</td>
+      <td>2018-2</td>
       <td>43280.15883</td>
       <td>3.4</td>
       <td>2</td>
@@ -17943,6 +17981,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>1474</th>
       <td>LCK</td>
+      <td>2018-2</td>
       <td>43280.28324</td>
       <td>3.4</td>
       <td>2</td>
@@ -17961,6 +18000,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>1522</th>
       <td>EULCS</td>
+      <td>2018-2</td>
       <td>43280.56992</td>
       <td>3</td>
       <td>1</td>
@@ -17979,6 +18019,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>1534</th>
       <td>EULCS</td>
+      <td>2018-2</td>
       <td>43280.60465</td>
       <td>3</td>
       <td>1</td>
@@ -17997,6 +18038,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>1546</th>
       <td>EULCS</td>
+      <td>2018-2</td>
       <td>43281.39797</td>
       <td>3</td>
       <td>2</td>
@@ -18015,6 +18057,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>1570</th>
       <td>EULCS</td>
+      <td>2018-2</td>
       <td>43281.47648</td>
       <td>3</td>
       <td>2</td>
@@ -18033,6 +18076,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>1654</th>
       <td>NALCS</td>
+      <td>2018-2</td>
       <td>43281.81993</td>
       <td>3</td>
       <td>1</td>
@@ -18065,10 +18109,12 @@ and lost 53 out of 103 games (51.45631067961165%)
       <td>...</td>
       <td>...</td>
       <td>...</td>
+      <td>...</td>
     </tr>
     <tr>
       <th>1822</th>
       <td>LCK</td>
+      <td>2018-2</td>
       <td>43282.27786</td>
       <td>3.6</td>
       <td>2</td>
@@ -18087,6 +18133,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>1846</th>
       <td>LCK</td>
+      <td>2018-2</td>
       <td>43292.15021</td>
       <td>4.1</td>
       <td>2</td>
@@ -18105,6 +18152,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>3418</th>
       <td>EULCS</td>
+      <td>2018-2</td>
       <td>43309.53367</td>
       <td>6</td>
       <td>2</td>
@@ -18123,6 +18171,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>3442</th>
       <td>NALCS</td>
+      <td>2018-2</td>
       <td>43309.65867</td>
       <td>6</td>
       <td>1</td>
@@ -18141,6 +18190,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>3814</th>
       <td>EULCS</td>
+      <td>2018-2</td>
       <td>43315.43477</td>
       <td>7</td>
       <td>1</td>
@@ -18159,6 +18209,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>3874</th>
       <td>EULCS</td>
+      <td>2018-2</td>
       <td>43316.38602</td>
       <td>7</td>
       <td>2</td>
@@ -18177,6 +18228,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>4162</th>
       <td>NALCS</td>
+      <td>2018-2</td>
       <td>43317.74189</td>
       <td>7</td>
       <td>2</td>
@@ -18195,6 +18247,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>4294</th>
       <td>EULCS</td>
+      <td>2018-2</td>
       <td>43322.44446</td>
       <td>8</td>
       <td>1</td>
@@ -18213,6 +18266,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>4354</th>
       <td>EULCS</td>
+      <td>2018-2</td>
       <td>43323.39444</td>
       <td>8</td>
       <td>2</td>
@@ -18231,6 +18285,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>4390</th>
       <td>EULCS</td>
+      <td>2018-2</td>
       <td>43323.56606</td>
       <td>8</td>
       <td>2</td>
@@ -18249,6 +18304,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>4678</th>
       <td>EULCS</td>
+      <td>2018-2</td>
       <td>43329.53127</td>
       <td>9</td>
       <td>1</td>
@@ -18267,6 +18323,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>4714</th>
       <td>EULCS</td>
+      <td>2018-2</td>
       <td>43330.39476</td>
       <td>9</td>
       <td>2</td>
@@ -18285,6 +18342,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>4750</th>
       <td>EULCS</td>
+      <td>2018-2</td>
       <td>43330.52545</td>
       <td>9</td>
       <td>2</td>
@@ -18303,6 +18361,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>4762</th>
       <td>EULCS</td>
+      <td>2018-2</td>
       <td>43330.56539</td>
       <td>9</td>
       <td>2</td>
@@ -18321,6 +18380,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>4870</th>
       <td>NALCS</td>
+      <td>2018-2</td>
       <td>43331.57002</td>
       <td>9</td>
       <td>2</td>
@@ -18339,6 +18399,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>5062</th>
       <td>EULCS</td>
+      <td>2018-2p</td>
       <td>43337.39611</td>
       <td>QF</td>
       <td>1</td>
@@ -18357,6 +18418,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>5122</th>
       <td>EULCS</td>
+      <td>2018-2rq</td>
       <td>43359.48661</td>
       <td>R3</td>
       <td>3</td>
@@ -18375,6 +18437,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>5494</th>
       <td>LCK</td>
+      <td>2018-2p</td>
       <td>43351.3422</td>
       <td>F</td>
       <td>5</td>
@@ -18393,6 +18456,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>6022</th>
       <td>EULCS</td>
+      <td>2018-2rq</td>
       <td>43359.44662</td>
       <td>R3</td>
       <td>2</td>
@@ -18411,6 +18475,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>15910</th>
       <td>LPL</td>
+      <td>2018-2rq</td>
       <td></td>
       <td>R2</td>
       <td>2</td>
@@ -18429,6 +18494,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>15958</th>
       <td>LPL</td>
+      <td>2018-2rq</td>
       <td></td>
       <td>R1</td>
       <td>2</td>
@@ -18447,6 +18513,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>15970</th>
       <td>LPL</td>
+      <td>2018-2rq</td>
       <td></td>
       <td>R1</td>
       <td>3</td>
@@ -18465,6 +18532,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>15994</th>
       <td>LPL</td>
+      <td>2018-2rq</td>
       <td></td>
       <td>R1</td>
       <td>5</td>
@@ -18483,6 +18551,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>16006</th>
       <td>LMS</td>
+      <td>2018-2rq</td>
       <td>43363.18905</td>
       <td>R1</td>
       <td>1</td>
@@ -18501,6 +18570,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>16030</th>
       <td>LMS</td>
+      <td>2018-2rq</td>
       <td>43363.30163</td>
       <td>R1</td>
       <td>3</td>
@@ -18519,6 +18589,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>16090</th>
       <td>LMS</td>
+      <td>2018-2rq</td>
       <td>43364.3066</td>
       <td>R2</td>
       <td>4</td>
@@ -18537,6 +18608,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>16114</th>
       <td>LMS</td>
+      <td>2018-2rq</td>
       <td>43365.18361</td>
       <td>R3</td>
       <td>1</td>
@@ -18555,6 +18627,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>16138</th>
       <td>LMS</td>
+      <td>2018-2rq</td>
       <td>43365.27207</td>
       <td>R3</td>
       <td>3</td>
@@ -18573,6 +18646,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>16162</th>
       <td>TCL</td>
+      <td>2018-2p</td>
       <td>43359.30353</td>
       <td>F</td>
       <td>2</td>
@@ -18591,6 +18665,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     <tr>
       <th>16186</th>
       <td>TCL</td>
+      <td>2018-2p</td>
       <td>43359.42644</td>
       <td>F</td>
       <td>4</td>
@@ -18608,7 +18683,7 @@ and lost 53 out of 103 games (51.45631067961165%)
     </tr>
   </tbody>
 </table>
-<p>64 rows × 15 columns</p>
+<p>64 rows × 16 columns</p>
 </div>
 </div>
 
@@ -18620,7 +18695,7 @@ and lost 53 out of 103 games (51.45631067961165%)
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[143]:</div>
+<div class="prompt input_prompt">In&nbsp;[21]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## For red team bans, how many of those matches did the red team lose?</span>
@@ -18655,7 +18730,7 @@ and lost 53 out of 103 games (51.45631067961165%)
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[142]:</div>
+<div class="prompt input_prompt">In&nbsp;[22]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## What do we get for the case where blue team bans Aatrox?</span>
@@ -18689,7 +18764,7 @@ and lost 53 out of 103 games (51.45631067961165%)
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[72]:</div>
+<div class="prompt input_prompt">In&nbsp;[23]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Hmmm...maybe not a signal here...might not be much point overall to </span>
@@ -18706,7 +18781,7 @@ and lost 53 out of 103 games (51.45631067961165%)
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[158]:</div>
+<div class="prompt input_prompt">In&nbsp;[24]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## In a game where Aatrox wasn&#39;t banned, was he picked? Was the team more </span>
@@ -18741,7 +18816,7 @@ and lost 53 out of 103 games (51.45631067961165%)
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[158]:</div>
+<div class="prompt output_prompt">Out[24]:</div>
 
 
 
@@ -18758,7 +18833,7 @@ and lost 53 out of 103 games (51.45631067961165%)
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[77]:</div>
+<div class="prompt input_prompt">In&nbsp;[25]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## As we can see from the data the most banned champion has a ~66% win rate when picked, which is substantially high considering</span>
@@ -18773,7 +18848,7 @@ and lost 53 out of 103 games (51.45631067961165%)
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[164]:</div>
+<div class="prompt input_prompt">In&nbsp;[26]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Now let&#39;s look at the overall ban rate compared to total games played for the most banned champion</span>
@@ -18812,7 +18887,7 @@ and lost 53 out of 103 games (51.45631067961165%)
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[27]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## As we can see the most banned champion is banned  ~66% of the games and of those games that aren&#39;t there is a win rate of ~66%.</span>
@@ -18827,7 +18902,7 @@ and lost 53 out of 103 games (51.45631067961165%)
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[159]:</div>
+<div class="prompt input_prompt">In&nbsp;[28]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Now let&#39;s look at the second most banned champion (Taliyah).</span>
@@ -18859,7 +18934,7 @@ and lost 53 out of 103 games (51.45631067961165%)
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[159]:</div>
+<div class="prompt output_prompt">Out[28]:</div>
 
 
 
@@ -18876,7 +18951,7 @@ and lost 53 out of 103 games (51.45631067961165%)
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[29]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## As we can see from the data the second most banned champion has a 60% win rate when picked. If from these two data point we</span>
@@ -18891,7 +18966,7 @@ and lost 53 out of 103 games (51.45631067961165%)
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[30]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Other questions we can ask...</span>
